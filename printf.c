@@ -126,7 +126,7 @@ int _printf(char *format, ...)
 			}
 		}
 		else
-			buffer_const_char(&format, buffer, &len);
+			printtotal += buffer_const_char(&format, buffer, &len);
 	}
 	write(1, buffer, len);
 	printtotal += len;
