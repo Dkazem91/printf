@@ -44,4 +44,6 @@ int _strlen(char *str);
 char *itos(va_list list);
 /* from uitob.c */
 char *uitob(va_list list);
+/* from utos.c */
+char *utos(va_list list);
 #endif

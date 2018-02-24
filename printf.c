@@ -47,6 +47,10 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 	case 'b':
 		*free = 1;
 		return (uitob(list));
+		break;
+	case 'u':
+		*free = 1;
+		return (utos(list));
 	}
 	return (NULL);
 }
