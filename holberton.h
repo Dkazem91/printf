@@ -40,5 +40,6 @@ char *prep_string(char *str, specifier spec);
 
 /* from utility.c */
 int _strlen(char *str);
-
+/* from itos.c */
+char *itos(va_list list);
 #endif

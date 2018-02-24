@@ -38,6 +38,11 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 	case 's':
 		*free = 1;
 		return (prep_string(va_arg(list, char *), spec));
+		break;
+	case 'd':
+	case 'i':
+		*free = 1;
+		return (itos(list));
 	}
 	return (NULL);
 }
