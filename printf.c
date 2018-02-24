@@ -21,7 +21,7 @@ int buffer_const_char(char **format, char *buffer, unsigned int *len)
 	return (printtotal);
 }
 
-char *stringize_arg(va_list list, specifier spec)
+char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 {
 	static char tmpstr[2] = {0, 0};
 
@@ -36,7 +36,8 @@ char *stringize_arg(va_list list, specifier spec)
 		return (tmpstr);
 		break;
 	case 's':
-		return (va_arg(list, char *));
+		*free = 1;
+		return (prep_string(va_arg(list, char *), spec));
 	}
 	return (NULL);
 }
@@ -45,6 +46,8 @@ specifier get_specifier(char **format)
 {
 	specifier spec;
 
+	spec.left = 0, spec.sign = 0, spec.space = 0;
+	spec.zerox = 0, spec.zero = 0;
 	while (**format == '-' || **format == '+' || **format == ' '
 	       || **format == '#' || **format == '0')
 	{
@@ -97,7 +100,7 @@ specifier get_specifier(char **format)
 int _printf(char *format, ...)
 {
 	char *tmp, buffer[1024];
-	unsigned int len = 0, bufflen = 0;
+	unsigned int len = 0, free;
 	unsigned long int printtotal = 0;
 	va_list list;
 	specifier spec;
@@ -109,7 +112,8 @@ int _printf(char *format, ...)
 		{
 			format++;
 			spec = get_specifier(&format);
-			tmp = stringize_arg(list, spec);
+			free = 0;
+			tmp = stringize_arg(list, spec, &free);
 			while (*tmp)
 			{
 				buffer[len++] = *tmp++;
