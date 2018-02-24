@@ -63,16 +63,18 @@ specifier get_specifier(char **format)
 			spec.zero = 1;
 		(*format)++;
 	}
-	spec.width = 0;
+	spec.width = 0;	spec.widthflag = 0;
 	while (**format >= '0' && **format <= '9')
 	{
+		spec.widthflag = 1;
 		spec.width *= 10;
 		spec.width += **format - '0';
 		(*format)++;
 	}
-	spec.precision = 0;
+	spec.precision = 0; spec.precisionflag = 0;
 	if (**format == '.')
 	{
+		spec.precisionflag = 1;
 		(*format)++;
 		while (**format >= '0' && **format <= '9')
 		{

@@ -17,13 +17,13 @@ char *prep_string(char *str, specifier spec)
 
 	len = _strlen(str);
 /*	printf("In prep_string precision %s / %d / %d\n",str, len, spec.precision);*/
-	if (len > spec.precision && spec.precision != 0)
+	if (len > spec.precision && spec.precisionflag != 0)
 		len = spec.precision;
 
 	printf("In prep_string width %d / %s\n", spec.width, str);
-	if (spec.width > spec.precision && spec.precision != 0)
+	if (spec.width > spec.precision && spec.precisionflag != 0)
 		spec.width = spec.precision;
-	if (len < spec.width && spec.width > spec.precision && spec.width != 0)
+	if (len < spec.width && spec.width > spec.precision && spec.widthflag != 0)
 	{
 		ret = malloc((spec.width + 1) * sizeof(char));
 		ptr = ret;
