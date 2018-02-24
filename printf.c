@@ -12,9 +12,29 @@ void buffer_const_char(char **format, char *buffer, unsigned int *len)
 		}
 }
 
+char *stringize_arg(va_list list, char *format)
+{
+	static char tmpstr[2] = {0, 0};
+
+	switch (*format)
+	{
+	case '%':
+		tmpstr[0] = '%';
+		return (tmpstr);
+		break;
+	case 'c':
+		tmpstr[0] = (char) va_arg(list, int);
+		return (tmpstr);
+		break;
+	case 's':
+		return (va_arg(list, char *));
+	}
+	return (NULL);
+}
+
 int _printf(char *format, ...)
 {
-	char *tmp, buffer[1024], tmpstr[2] = {0, 0};
+	char *tmp, buffer[1024];
 	unsigned int len = 0, bufflen = 0;
 	unsigned long int printtotal = 0;
 	va_list list;
@@ -25,19 +45,7 @@ int _printf(char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			switch (*format)
-			{
-			case '%':
-				tmpstr[0] = '%';
-				tmp = tmpstr;
-				break;
-			case 'c':
-				tmpstr[0] = (char) va_arg(list, int);
-				tmp = tmpstr;
-				break;
-			case 's':
-				tmp = va_arg(list, char *);
-			}
+			tmp = stringize_arg(list, format);
 			format++;
 			while (*tmp)
 				buffer[len++] = *tmp++;
