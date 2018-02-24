@@ -12,5 +12,5 @@ int main(void)
 	while (i--)
 		arr[i] = 'a';
 	printf("FROM MAIN: %.3s\n", arr);
-	return _printf("%d\n", 123);
+	return _printf("%b\n", 98);
 }

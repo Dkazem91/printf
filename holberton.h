@@ -42,4 +42,6 @@ char *prep_string(char *str, specifier spec);
 int _strlen(char *str);
 /* from itos.c */
 char *itos(va_list list);
+/* from uitob.c */
+char *uitob(va_list list);
 #endif
