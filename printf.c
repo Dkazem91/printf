@@ -2,21 +2,30 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include "holberton.h"
 
-void buffer_const_char(char **format, char *buffer, unsigned int *len)
+int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
-		while (**format != 0 && **format != '%')
+	int printtotal = 0;
+	while (**format != 0 && **format != '%')
+	{
+		buffer[(*len)++] = **format;
+		(*format)++;
+		if (*len == 1024)
 		{
-			buffer[(*len)++] = **format;
-			(*format)++;
+			write(1, buffer, 1024);
+			*len = 0;
+			printtotal += 1024;
 		}
+	}
+	return (printtotal);
 }
 
-char *stringize_arg(va_list list, char *format)
+char *stringize_arg(va_list list, specifier spec)
 {
 	static char tmpstr[2] = {0, 0};
 
-	switch (*format)
+	switch (spec.specifier)
 	{
 	case '%':
 		tmpstr[0] = '%';
@@ -32,12 +41,66 @@ char *stringize_arg(va_list list, char *format)
 	return (NULL);
 }
 
+specifier get_specifier(char **format)
+{
+	specifier spec;
+
+	while (**format == '-' || **format == '+' || **format == ' '
+	       || **format == '#' || **format == '0')
+	{
+		if (**format == '-')
+			spec.left = 1;
+		else if (**format == '+')
+			spec.sign = 1;
+		else if (**format == ' ')
+			spec.space = 1;
+		else if (**format == '#')
+			spec.zerox = 1;
+		else
+			spec.zero = 1;
+		(*format)++;
+	}
+	spec.width = 0;
+	while (**format >= '0' && **format <= '9')
+	{
+		spec.width *= 10;
+		spec.width += **format - '0';
+		(*format)++;
+	}
+	spec.precision = 0;
+	if (**format == '.')
+	{
+		(*format)++;
+		while (**format >= '0' && **format <= '9')
+		{
+			spec.precision *= 10;
+			spec.precision += **format - '0';
+			(*format)++;
+		}
+	}
+	spec.length = 0;
+	while (**format == 'h')
+	{
+		(*format)++;
+		spec.length--;
+	}
+	while (**format == 'l')
+	{
+		(*format)++;
+		spec.length++;
+	}
+	spec.specifier = **format;
+	(*format)++;
+	return (spec);
+}
+
 int _printf(char *format, ...)
 {
 	char *tmp, buffer[1024];
 	unsigned int len = 0, bufflen = 0;
 	unsigned long int printtotal = 0;
 	va_list list;
+	specifier spec;
 
 	va_start(list, format);
 	while (*format)
@@ -45,10 +108,18 @@ int _printf(char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			tmp = stringize_arg(list, format);
-			format++;
+			spec = get_specifier(&format);
+			tmp = stringize_arg(list, spec);
 			while (*tmp)
+			{
 				buffer[len++] = *tmp++;
+				if (len == 1024)
+				{
+					write(1, buffer, 1024);
+					len = 0;
+					printtotal += 1024;
+				}
+			}
 		}
 		else
 			buffer_const_char(&format, buffer, &len);
