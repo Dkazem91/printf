@@ -1,6 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "holberton.h"
+
+/**
+ * _strlen - returns length of a string
+ *
+ * @str: string to get length of
+ *
+ * Return: length of string
+ */
 int _strlen(char *str)
 {
 	int len = 0;
@@ -10,6 +18,7 @@ int _strlen(char *str)
 
 	return (len);
 }
+
 char * _numToString(int result, int count, int chop)
 {
 	int i;
