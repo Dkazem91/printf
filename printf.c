@@ -63,6 +63,9 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 	case 'X':
 		*free = 1;
 		return (prep_numeric(itoX(list), spec));
+	case 'r':
+		*free = 1;
+		return (prep_string(rev(va_arg(list, char *)), spec));
 	}
 	return (NULL);
 }
@@ -127,6 +130,7 @@ specifier get_specifier(char **format)
 	{
 	case '%': case 's': case 'c': case 'i': case 'd':
 	case 'x': case 'X': case 'b': case 'o': case 'u':
+	case 'r':
 		(*format)++;
 		break;
 	default:
