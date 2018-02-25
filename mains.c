@@ -214,11 +214,18 @@ int main(void)
 	_printf("%s%-#030.20o\n", "Int max -#030.20o:", INT_MAX);
 	printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
 	_printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
+	#define INT_MAX __INT_MAX__
 	/* Put other test cases here */
 	_printf("Other test cases\n");
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
 	_printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
-	printf("%99999999999s\n", "A really wide string");
+	printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
+	_printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
+	printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
+	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
+	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
+	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
+	printf("%99999999999s\n", "A really wide string"); /* does not print */
 }
