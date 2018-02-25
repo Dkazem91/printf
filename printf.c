@@ -21,7 +21,7 @@ int buffer_const_char(char **format, char *buffer, unsigned int *len)
 	return (printtotal);
 }
 
-char *stringize_arg(va_list list, specifier spec, unsigned int *free)
+char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 {
 	static char tmpstr[2] = {0, 0};
 
@@ -36,35 +36,35 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 		return (tmpstr);
 		break;
 	case 's':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_string(va_arg(list, char *), spec));
 		break;
 	case 'd':
 	case 'i':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(itos(list), spec));
 		break;
 	case 'b':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(uitob(list), spec));
 		break;
 	case 'u':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(utos(list), spec));
 		break;
 	case 'o':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(itoo(list), spec));
 		break;
 	case 'x':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(itox(list), spec));
 		break;
 	case 'X':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_numeric(itoX(list), spec));
 	case 'r':
-		*free = 1;
+		*freeflag = 1;
 		return (prep_string(rev(va_arg(list, char *)), spec));
 	}
 	return (NULL);
@@ -143,8 +143,8 @@ specifier get_specifier(char **format)
 
 int _printf(char *format, ...)
 {
-	char *tmp, buffer[1024];
-	unsigned int len = 0, free;
+	char *tmp, *ptr, buffer[1024];
+	unsigned int len = 0, freeflag = 0;
 	unsigned long int printtotal = 0;
 	va_list list;
 	specifier spec;
@@ -156,11 +156,12 @@ int _printf(char *format, ...)
 		{
 			format++;
 			spec = get_specifier(&format);
-			free = 0;
-			tmp = stringize_arg(list, spec, &free);
-			while (*tmp)
+			freeflag = 0;
+			tmp = stringize_arg(list, spec, &freeflag);
+			ptr = tmp;
+			while (*ptr)
 			{
-				buffer[len++] = *tmp++;
+				buffer[len++] = *ptr++;
 				if (len == 1024)
 				{
 					write(1, buffer, 1024);
@@ -168,6 +169,8 @@ int _printf(char *format, ...)
 					printtotal += 1024;
 				}
 			}
+			if (freeflag)
+				free(tmp);
 		}
 		else
 			printtotal += buffer_const_char(&format, buffer, &len);

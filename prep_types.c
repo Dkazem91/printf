@@ -12,7 +12,7 @@
  */
 char *prep_numeric(char *str, specifier spec)
 {
-	char *ret, *ptr;
+	char *ret, *ptr, *hold = str;
 	unsigned int len, digits, xtype = 0;
 	char fill = ' ';
 
@@ -68,6 +68,7 @@ char *prep_numeric(char *str, specifier spec)
 		*ptr++ = *str++;
 	while (spec.left == 1 && spec.width--)
 		*ptr++ = ' ';
+	free(hold);
 	return (ret);
 }
 
@@ -81,7 +82,7 @@ char *prep_numeric(char *str, specifier spec)
  */
 char *prep_string(char *str, specifier spec)
 {
-	char *ret, *ptr;
+	char *ret, *ptr, *hold = str;
 	unsigned int len;
 
 	len = _strlen(str);
@@ -118,5 +119,6 @@ char *prep_string(char *str, specifier spec)
 			*ptr++ = *str++;
 		*ptr = 0;
 	}
+	free(hold);
 	return (ret);
 }
