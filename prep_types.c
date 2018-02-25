@@ -85,12 +85,10 @@ char *prep_string(char *str, specifier spec)
 	unsigned int len;
 
 	len = _strlen(str);
-	if (len > spec.precision && spec.precisionflag != 0)
+	if (len > spec.precision && spec.precisionflag == 1)
 		len = spec.precision;
 
-	if (spec.width > spec.precision && spec.precisionflag != 0)
-		spec.width = spec.precision;
-	if (len < spec.width && spec.width > spec.precision && spec.widthflag != 0)
+	if (len < spec.width && spec.widthflag == 1)
 	{
 		ret = malloc((spec.width + 1) * sizeof(char));
 		ptr = ret;
@@ -100,6 +98,7 @@ char *prep_string(char *str, specifier spec)
 				*ptr++ = ' ';
 			while (len--)
 				*ptr++ = *str++;
+			*ptr = 0;
 		}
 		else
 		{
@@ -108,6 +107,7 @@ char *prep_string(char *str, specifier spec)
 				*ptr++ = *str++;
 			while (spec.width--)
 				*ptr++ = ' ';
+			*ptr = 0;
 		}
 	}
 	else
