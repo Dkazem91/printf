@@ -13,9 +13,12 @@
 char *prep_numeric(char *str, specifier spec)
 {
 	char *ret, *ptr;
-	unsigned int len, digits, filllen;
+	unsigned int len, digits, xtype = 0;
 	char fill = ' ';
 
+	if (spec.specifier == 'b' || spec.specifier == 'x'
+	    || spec.specifier == 'X')
+		xtype = 1;
 	if (spec.zero == 1 && spec.left == 0)
 		fill = '0';
 
@@ -23,10 +26,12 @@ char *prep_numeric(char *str, specifier spec)
 	len = digits;
 	if (len < spec.precision && spec.precisionflag == 1)
 		len = spec.precision;
-
-	if (spec.zerox == 1)
+	if (spec.zerox == 1 && xtype == 1)
 		len += 2;
-
+	else if (spec.zerox == 1 && spec.specifier == 'o')
+		len++;
+	else
+		spec.zerox = 0;
 	if (spec.width > len)
 	{
 		spec.width -= len;
@@ -34,19 +39,23 @@ char *prep_numeric(char *str, specifier spec)
 	}
 	else
 		spec.width = 0;
+
+
 	ret = malloc((len + 1) * sizeof(char));
 	ptr = ret;
-	if (spec.zerox == 1 && spec.zero == 1 || spec.left == 1)
+	if (spec.zerox == 1 && (spec.zero == 1 || spec.left == 1))
 	{
 		*ptr++ = '0';
-		*ptr++ = spec.specifier;
+		if (xtype)
+			*ptr++ = spec.specifier;
 	}
 	while (spec.left == 0 && spec.width--)
 		*ptr++ = fill;
-	if (spec.zerox == 1 && spec.zero == 0)
+	if (spec.zerox == 1 && spec.zero == 0 && spec.left == 0)
 	{
 		*ptr++ = '0';
-		*ptr++ = spec.specifier;
+		if (xtype)
+			*ptr++ = spec.specifier;
 	}
 	while (spec.precision-- > digits)
 		*ptr++ = '0';

@@ -42,27 +42,27 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 	case 'd':
 	case 'i':
 		*free = 1;
-		return (itos(list));
+		return (prep_numeric(itos(list), spec));
 		break;
 	case 'b':
 		*free = 1;
-		return (uitob(list));
+		return (prep_numeric(uitob(list), spec));
 		break;
 	case 'u':
 		*free = 1;
-		return (utos(list));
+		return (prep_numeric(utos(list), spec));
 		break;
 	case 'o':
 		*free = 1;
-		return (itoo(list));
+		return (prep_numeric(itoo(list), spec));
 		break;
 	case 'x':
 		*free = 1;
-		return (itox(list));
+		return (prep_numeric(itox(list), spec));
 		break;
 	case 'X':
 		*free = 1;
-		return (itoX(list));
+		return (prep_numeric(itoX(list), spec));
 	}
 	return (NULL);
 }
