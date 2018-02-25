@@ -70,7 +70,9 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 specifier get_specifier(char **format)
 {
 	specifier spec;
+	char *start;
 
+	start = *format;
 	spec.left = 0, spec.sign = 0, spec.space = 0;
 	spec.zerox = 0, spec.zero = 0;
 	while (**format == '-' || **format == '+' || **format == ' '
@@ -121,7 +123,17 @@ specifier get_specifier(char **format)
 		spec.length++;
 	}
 	spec.specifier = **format;
-	(*format)++;
+	switch (**format)
+	{
+	case '%': case 's': case 'c': case 'i': case 'd':
+	case 'x': case 'X': case 'b': case 'o': case 'u':
+		(*format)++;
+		break;
+	default:
+		*format = start;
+		spec.specifier = '%';
+		break;
+	}
 	return (spec);
 }
 
