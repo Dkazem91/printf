@@ -15,6 +15,7 @@ char *rev(char *str)
 
 	len = _strlen(str);
 	ret = malloc(len + 1);
+	ret[len] = 0;
 	ptr = ret;
 	while (*str)
 		*ptr++ = *str++;
