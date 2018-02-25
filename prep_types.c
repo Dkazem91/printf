@@ -43,7 +43,7 @@ char *prep_numeric(char *str, specifier spec)
 
 	ret = malloc((len + 1) * sizeof(char));
 	ptr = ret;
-	if (spec.zerox == 1 && (spec.zero == 1 || spec.left == 1))
+	if (spec.zerox == 1 && (spec.zero == 1 || spec.left == 1) && *str)
 	{
 		*ptr++ = '0';
 		if (xtype)
@@ -51,7 +51,8 @@ char *prep_numeric(char *str, specifier spec)
 	}
 	while (spec.left == 0 && spec.width--)
 		*ptr++ = fill;
-	if (spec.zerox == 1 && spec.zero == 0 && spec.left == 0)
+	if (spec.zerox == 1 && spec.zero == 0 && spec.left == 0 &&
+	    (*str || spec.specifier == 'o'))
 	{
 		*ptr++ = '0';
 		if (xtype)
