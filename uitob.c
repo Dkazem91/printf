@@ -17,7 +17,7 @@ char *uitob(va_list list)
 		uiArgTest /= 2;
 		counter++;
 	}
-	result = malloc(sizeof(char) * counter);
+	result = malloc(sizeof(char) * (counter + 1));
 	uiArgTest = uiArg;
 	for (i = counter - 1; i >= 0; i--)
 	{
