@@ -68,6 +68,7 @@ char *prep_numeric(char *str, specifier spec)
 		*ptr++ = *str++;
 	while (spec.left == 1 && spec.width--)
 		*ptr++ = ' ';
+	*ptr = 0;
 	free(hold);
 	return (ret);
 }
@@ -119,6 +120,7 @@ char *prep_string(char *str, specifier spec)
 			*ptr++ = *str++;
 		*ptr = 0;
 	}
-	free(hold);
+	if (spec.specifier != 's')
+		free(hold);
 	return (ret);
 }
