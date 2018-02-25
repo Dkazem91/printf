@@ -3,7 +3,62 @@
 #include <stdlib.h>
 
 /**
- * prep_string - prepares a string for printf
+ * prep_numeric - prepares a numeric string for printf
+ *
+ * @str: numeric string to prepare
+ * @spec: specifier info
+ *
+ * Return: char * to new string
+ */
+char *prep_numeric(char *str, specifier spec)
+{
+	char *ret, *ptr;
+	unsigned int len, digits, filllen;
+	char fill = ' ';
+
+	if (spec.zero == 1 && spec.left == 0)
+		fill = '0';
+
+	digits = _strlen(str);
+	len = digits;
+	if (len < spec.precision && spec.precisionflag == 1)
+		len = spec.precision;
+
+	if (spec.zerox == 1)
+		len += 2;
+
+	if (spec.width > len)
+	{
+		spec.width -= len;
+		len += spec.width;
+	}
+	else
+		spec.width = 0;
+	ret = malloc((len + 1) * sizeof(char));
+	ptr = ret;
+	if (spec.zerox == 1 && spec.zero == 1 || spec.left == 1)
+	{
+		*ptr++ = '0';
+		*ptr++ = spec.specifier;
+	}
+	while (spec.left == 0 && spec.width--)
+		*ptr++ = fill;
+	if (spec.zerox == 1 && spec.zero == 0)
+	{
+		*ptr++ = '0';
+		*ptr++ = spec.specifier;
+	}
+	while (spec.precision-- > digits)
+		*ptr++ = '0';
+	while (digits--)
+		*ptr++ = *str++;
+	while (spec.left == 1 && spec.width--)
+		*ptr++ = ' ';
+	return (ret);
+}
+
+/**
+ * prep_string - prepares a character string for printf
  *
  * @str: string to prepare
  * @spec: specifier info
@@ -13,7 +68,7 @@
 char *prep_string(char *str, specifier spec)
 {
 	char *ret, *ptr;
-	unsigned int len, tmp;
+	unsigned int len;
 
 	len = _strlen(str);
 	if (len > spec.precision && spec.precisionflag != 0)
