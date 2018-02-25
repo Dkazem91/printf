@@ -20,6 +20,18 @@ int main(void)
 	_printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
 	_printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
+	printf("%%.10s:%.10s\n", "A helpful string that is 49 chars long.");
+	_printf("%%.10s:%.10s\n", "A helpful string that is 49 chars long.");
+	printf("%%-.10s:%-.10s\n", "A helpful string that is 49 chars long.");
+	_printf("%%-.10s:%-.10s\n", "A helpful string that is 49 chars long.");
+	printf("%%60.10s:%60.10s\n", "A helpful string that is 49 chars long.");
+	_printf("%%60.10s:%60.10s\n", "A helpful string that is 49 chars long.");
+	printf("%%-60.10s:%-60.10s\n", "A helpful string that is 49 chars long.");
+	_printf("%%-60.10s:%-60.10s\n", "A helpful string that is 49 chars long.");
+	printf("%%-60.70s:%-60.70s\n", "A helpful string that is 49 chars long.");
+	_printf("%%-60.70s:%-60.70s\n", "A helpful string that is 49 chars long.");
+	printf("%%60.70s:%60.70s\n", "A helpful string that is 49 chars long.");
+	printf("%%60.70s:%60.70s\n", "A helpful string that is 49 chars long.");
 	printf("%s%d\n", "Int max d:", INT_MAX);
 	_printf("%s%d\n", "Int max d:", INT_MAX);
 	printf("%s%30d\n", "Int max 30d:", INT_MAX);
