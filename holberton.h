@@ -3,7 +3,7 @@
 #include <stdarg.h>
 
 /**
- * specifier - contains specifiers for printf
+ * struct specifier - contains specifiers for printf
  *
  * @width: width of field to print
  * @precision: precision of field to print
