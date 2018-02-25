@@ -50,4 +50,8 @@ char *uitob(va_list list);
 char *utos(va_list list);
 /* from itoo.c */
 char *itoo(va_list list);
+/* from itox.c */
+char *itox(va_list list);
+/* from itox.c */
+char *itoX(va_list list);
 #endif

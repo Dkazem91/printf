@@ -55,6 +55,14 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *free)
 	case 'o':
 		*free = 1;
 		return (itoo(list));
+		break;
+	case 'x':
+		*free = 1;
+		return (itox(list));
+		break;
+	case 'X':
+		*free = 1;
+		return (itoX(list));
 	}
 	return (NULL);
 }
