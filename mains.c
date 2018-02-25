@@ -8,6 +8,9 @@ int _printf(char *, ...);
 
 int main(void)
 {
+	char numericspecs[7] = "duxXob";
+	char formatbuf[100];
+	int a;
 	char arr[2000];
 	int i=1999;
 
@@ -212,6 +215,8 @@ int main(void)
 	_printf("%s%0.0o\n", "Int 0 0.0o:", 0);
 	printf("%s%o\n", "UInt 0 o:", 0);
 	_printf("%s%o\n", "UInt 0 o:", 0);
+	printf("%s%#30o\n", "UInt 0 #30o:", 0);
+	printf("%s%#30o\n", "UInt 0 #30o:", 0);
 	printf("%s%#.0o\n", "Int 0 #.0o:", 0);
 	_printf("%s%#.0o\n", "Int 0 #.0o:", 0);
 	printf("%s%#.20o\n", "Int max #.20o:", INT_MAX);
