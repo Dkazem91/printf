@@ -29,6 +29,7 @@ typedef struct specifier
 	char space;
 	char zero;
 	char zerox;
+	char prefix;
 	char specifier;
 } specifier;
 
