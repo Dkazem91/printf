@@ -40,10 +40,14 @@ char *prep_string(char *str, specifier spec);
 
 /* from utility.c */
 int _strlen(char *str);
+/* from utility.c */
+char * _numToString(int result, int count, int chop);
 /* from itos.c */
 char *itos(va_list list);
 /* from uitob.c */
 char *uitob(va_list list);
 /* from utos.c */
 char *utos(va_list list);
+/* from itoo.c */
+char *itoo(va_list list);
 #endif
