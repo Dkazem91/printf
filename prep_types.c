@@ -29,7 +29,12 @@ char *prep_numeric(char *str, specifier spec)
 	if (spec.zerox == 1 && xtype == 1)
 		len += 2;
 	else if (spec.zerox == 1 && spec.specifier == 'o')
-		len++;
+	{
+		if (spec.precision <= digits)
+			spec.precision = digits + 1;
+		len = spec.precision;
+		spec.zerox = 0;
+	}
 	else
 		spec.zerox = 0;
 	if (spec.width > len)
@@ -39,7 +44,6 @@ char *prep_numeric(char *str, specifier spec)
 	}
 	else
 		spec.width = 0;
-
 
 	ret = malloc((len + 1) * sizeof(char));
 	ptr = ret;
@@ -52,7 +56,7 @@ char *prep_numeric(char *str, specifier spec)
 	while (spec.left == 0 && spec.width--)
 		*ptr++ = fill;
 	if (spec.zerox == 1 && spec.zero == 0 && spec.left == 0 &&
-	    (*str || spec.specifier == 'o'))
+	    (*str))
 	{
 		*ptr++ = '0';
 		if (xtype)
