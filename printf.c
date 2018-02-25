@@ -143,7 +143,7 @@ specifier get_specifier(char **format)
 
 int _printf(char *format, ...)
 {
-	char *tmp, *ptr, buffer[1024];
+	char *tmp = 0, *ptr = 0, buffer[1024];
 	unsigned int len = 0, freeflag = 0;
 	unsigned long int printtotal = 0;
 	va_list list;

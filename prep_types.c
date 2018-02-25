@@ -24,7 +24,7 @@ char *prep_numeric(char *str, specifier spec)
 
 	digits = _strlen(str);
 	len = digits;
-	if (len < spec.precision && spec.precisionflag == 1)
+	if (len < spec.precision)
 		len = spec.precision;
 	if (spec.zerox == 1 && xtype == 1)
 		len += 2;
