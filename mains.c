@@ -151,4 +151,6 @@ int main(void)
 	_printf("%s%-#30.20o\n", "Int max -#30.20o:", INT_MAX);
 	printf("%s%-#030.20o\n", "Int max -#030.20o:", INT_MAX);
 	_printf("%s%-#030.20o\n", "Int max -#030.20o:", INT_MAX);
+	/* Put other test cases here */
+	_printf("Other test cases\n");
 }
