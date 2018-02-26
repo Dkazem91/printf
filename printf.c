@@ -74,6 +74,9 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	case 'S':
 		*freeflag = 1;
 		return (prep_string(print_hidden(va_arg(list, char *)), spec));
+	case 'p':
+		*freeflag = 1;
+		return (prep_numeric(litox(list), spec));
 	}
 	return (NULL);
 }
@@ -134,14 +137,16 @@ specifier get_specifier(char **format)
 		spec.length++;
 	}
 	spec.specifier = **format;
+	if (**format == 'p')
+		spec.zerox = 1;
 	switch (**format)
 	{
 	case '%': case 's': case 'c': case 'i': case 'd':
 	case 'x': case 'X': case 'b': case 'o': case 'u':
-	case 'R': case 'r': case 'S':
+	case 'R': case 'r': case 'S': case 'p':
 		(*format)++;
 		break;
-	default:
+ 	default:
 		*format = start;
 		spec.specifier = '%';
 		break;
