@@ -25,6 +25,10 @@ int main(void)
 	_printf("Formatting and min/max tests\n");
 	printf("%%s NULL:%s\n", NULL);
 	_printf("%%s NULL:%s\n", NULL);
+	_printf("%%r NULL:%r\n", NULL);
+	_printf("%%R NULL:%R\n", NULL);
+	printf("%%S NULL:%S\n", NULL);
+	_printf("%%S NULL:%S\n", NULL);
 	printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	_printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
@@ -48,7 +52,6 @@ int main(void)
 	_printf("60R:%60R\n", "A helpful string that is 49 chars long.");
 	_printf("-60.10R:%-60.10R\n", "A helpful string that is 49 chars long.");
 	_printf("random chars R:%R\n", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}:\"';,./<>?[]`~-=_+\|");
-	printf("%%s:%s\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%s:%s\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%S:%S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%10S:%10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
