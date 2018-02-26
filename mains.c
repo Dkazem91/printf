@@ -55,7 +55,7 @@ int main(void)
 	_printf("%%.11S:%.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%21.11S:%20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%-10.11S:%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
-	_printf("%%-20.11S%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%-20.11S:%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	printf("%s%d\n", "Int 0 d:", 0);
 	_printf("%s%d\n", "Int 0 d:", 0);
 	printf("%s%.0d\n", "Int 0 .0d:", 0);
