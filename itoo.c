@@ -24,6 +24,6 @@ char *itoo(va_list list)
                 output[i] = ((digitTest % 8) + '0');
                 digitTest /= 8;
         }
-        output[i] = '\0';
+        output[count] = '\0';
 	return(output);
 }
