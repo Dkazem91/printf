@@ -76,7 +76,7 @@ char *prep_numeric(char *str, specifier spec)
 		len++;
 	ret = malloc((len + 1) * sizeof(char));
 	ptr = ret;
-	if (spec.zerox == 1 && (spec.zero == 1 || spec.left == 1) && *str)
+	if (spec.zerox == 1 && (fill == '0' || spec.left == 1) && *str)
 	{
 		*ptr++ = '0';
 		if (xtype)
@@ -86,8 +86,7 @@ char *prep_numeric(char *str, specifier spec)
 		*ptr++ = sign;
 	while (spec.left == 0 && spec.width--)
 		*ptr++ = fill;
-	if (spec.zerox == 1 && spec.zero == 0 && spec.left == 0 &&
-	    (*str))
+	if (fill == ' ' && spec.zerox == 1 && spec.left == 0 && (*str))
 	{
 		*ptr++ = '0';
 		if (xtype)
