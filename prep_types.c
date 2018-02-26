@@ -18,7 +18,10 @@ char *prep_numeric(char *str, specifier spec)
 
 	setbuf(stdout, NULL);
 	if (spec.specifier == 'p' && *str == 0)
+	{
+		free(hold);
 		return (nil());
+	}
 	if (spec.specifier == 'b' || spec.specifier == 'x' ||
 	    spec.specifier == 'X' || spec.specifier == 'p')
 		xtype = 1;

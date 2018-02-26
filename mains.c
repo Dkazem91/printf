@@ -473,6 +473,7 @@ int main(void)
 	_printf("%%020p arr:%020p\n", arr);
 #endif	/* Put other test cases here */
 	_printf("Other test cases\n");
+	_printf("%x\n", 0);
 /* Good enough for now. Hiding this output.
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
