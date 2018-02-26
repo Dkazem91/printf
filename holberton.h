@@ -41,7 +41,6 @@ char *prep_numeric(char *str, specifier spec);
 
 /* from utility.c */
 int _strlen(char *str);
-char * _numToString(unsigned int result, int count, int chop, int neg);
 
 /* from itos.c */
 char *itos(va_list list);
@@ -58,7 +57,8 @@ char *itoo(va_list list);
 /* from itox.c */
 char *itox(va_list list);
 char *litox(va_list list);
-
+char *llitox(va_list list);
+char *hitox(va_list list);
 /* from itox.c */
 char *itoX(va_list list);
 

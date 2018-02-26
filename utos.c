@@ -5,30 +5,124 @@
 #include "holberton.h"
 char *utos(va_list list)
 {
-	unsigned int digits, digitTest, count, i, mult;
+	unsigned int digits, digitTest;
+	int count, i;
 	char *result;
 
 	digits = va_arg(list, unsigned int);
 	digitTest = digits;
 	count = 0;
-	mult = 1;
 	while (digitTest > 0)
 	{
 		digitTest /= 10;
 		count++;
-		if(count > 1)
-			mult *=10;
 	}
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
-	if (result == NULL)
-		return (NULL);
-	for (i = 0; i < count; i++)
+	for (i = count - 1; i >= 0; i--)
 	{
-		result[i] = (digitTest/mult + '0');
-		digitTest %= mult;
-		mult /= 10;
+		result[i] = (digitTest % 10 + '0');
+		digitTest /= 10;
 	}
-	result[i] = '\0';
+	result[count] = '\0';
+	return (result);
+}
+char *lutos(va_list list)
+{
+	unsigned long int digits, digitTest;
+	int count, i;
+	char *result;
+
+	digits = va_arg(list, unsigned long int);
+	digitTest = digits;
+	count = 0;
+	while (digitTest > 0)
+	{
+		digitTest /= 10;
+		count++;
+	}
+	digitTest = digits;
+	result = malloc(sizeof(char) * count + 1);
+	for (i = count - 1; i >= 0; i--)
+	{
+		result[i] = (digitTest % 10 + '0');
+		digitTest /= 10;
+	}
+	result[count] = '\0';
+	return (result);
+}
+
+char *llutos(va_list list)
+{
+	unsigned long long int digits, digitTest;
+	int count, i;
+	char *result;
+
+	digits = va_arg(list, unsigned long long int);
+	digitTest = digits;
+	count = 0;
+	while (digitTest > 0)
+	{
+		digitTest /= 10;
+		count++;
+	}
+	digitTest = digits;
+	result = malloc(sizeof(char) * count + 1);
+	for (i = count - 1; i >= 0; i--)
+	{
+		result[i] = (digitTest % 10 + '0');
+		digitTest /= 10;
+	}
+	result[count] = '\0';
+	return (result);
+}
+
+char *hutos(va_list list)
+{
+	unsigned short int digits, digitTest;
+	int count, i;
+	char *result;
+
+	digits = va_arg(list, unsigned short int);
+	digitTest = digits;
+	count = 0;
+	while (digitTest > 0)
+	{
+		digitTest /= 10;
+		count++;
+	}
+	digitTest = digits;
+	result = malloc(sizeof(char) * count + 1);
+	for (i = count - 1; i >= 0; i--)
+	{
+		result[i] = (digitTest % 10 + '0');
+		digitTest /= 10;
+	}
+	result[count] = '\0';
+	return (result);
+}
+
+char *hhutos(va_list list)
+{
+	char digits, digitTest;
+	int count, i;
+	char *result;
+
+	digits = va_arg(list, char);
+	digitTest = digits;
+	count = 0;
+	while (digitTest > 0)
+	{
+		digitTest /= 10;
+		count++;
+	}
+	digitTest = digits;
+	result = malloc(sizeof(char) * count + 1);
+	for (i = count - 1; i >= 0; i--)
+	{
+		result[i] = (digitTest % 10 + '0');
+		digitTest /= 10;
+	}
+	result[count] = '\0';
 	return (result);
 }

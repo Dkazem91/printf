@@ -3,19 +3,23 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
-char *itox(va_list list)
+/**
+ * itoX - hexadecimal characters, capital
+ * @list: variadic arguments
+ */
+char *itoX(va_list list)
 {
 	unsigned int digits, digitTest;
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, unsigned int);
+	digits = va_arg(list, int);
 	count = 0;
 	digitTest = digits;
 	while (digitTest > 0)
 	{
 		digitTest /=16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -23,7 +27,7 @@ char *itox(va_list list)
 	for(i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
-			result[i] = (digitTest % 16) + 87;
+			result[i] = (digitTest % 16) + 55;
 		else
 			result[i] = (digitTest % 16) + '0';
 		digitTest /= 16;
@@ -32,7 +36,7 @@ char *itox(va_list list)
 	return (result);
 }
 
-char *litox(va_list list)
+char *litoX(va_list list)
 {
 	unsigned long int digits, digitTest;
 	int count, i;
@@ -44,7 +48,7 @@ char *litox(va_list list)
 	while (digitTest > 0)
 	{
 		digitTest /=16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -52,7 +56,7 @@ char *litox(va_list list)
 	for(i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
-			result[i] = (digitTest % 16) + 87;
+			result[i] = (digitTest % 16) + 55;
 		else
 			result[i] = (digitTest % 16) + '0';
 		digitTest /= 16;
@@ -61,7 +65,7 @@ char *litox(va_list list)
 	return (result);
 }
 
-char *llitox(va_list list)
+char *llitoX(va_list list)
 {
 	unsigned long long int digits, digitTest;
 	int count, i;
@@ -73,7 +77,7 @@ char *llitox(va_list list)
 	while (digitTest > 0)
 	{
 		digitTest /=16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -81,7 +85,7 @@ char *llitox(va_list list)
 	for(i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
-			result[i] = (digitTest % 16) + 87;
+			result[i] = (digitTest % 16) + 55;
 		else
 			result[i] = (digitTest % 16) + '0';
 		digitTest /= 16;
@@ -90,9 +94,9 @@ char *llitox(va_list list)
 	return (result);
 }
 
-char *hitox(va_list list)
+char *hitoX(va_list list)
 {
-	short int digits, digitTest;
+	unsigned short int digits, digitTest;
 	int count, i;
 	char *result;
 
@@ -102,7 +106,7 @@ char *hitox(va_list list)
 	while (digitTest > 0)
 	{
 		digitTest /=16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -110,7 +114,7 @@ char *hitox(va_list list)
 	for(i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
-			result[i] = (digitTest % 16) + 87;
+			result[i] = (digitTest % 16) + 55;
 		else
 			result[i] = (digitTest % 16) + '0';
 		digitTest /= 16;
@@ -120,7 +124,7 @@ char *hitox(va_list list)
 }
 
 
-char *hhitox(va_list list)
+char *hhitoX(va_list list)
 {
 	char digits, digitTest;
 	int count, i;
@@ -132,7 +136,7 @@ char *hhitox(va_list list)
 	while (digitTest > 0)
 	{
 		digitTest /=16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -140,7 +144,7 @@ char *hhitox(va_list list)
 	for(i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
-			result[i] = (digitTest % 16) + 87;
+			result[i] = (digitTest % 16) + 55;
 		else
 			result[i] = (digitTest % 16) + '0';
 		digitTest /= 16;

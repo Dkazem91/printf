@@ -18,25 +18,3 @@ int _strlen(char *str)
 
 	return (len);
 }
-
-char * _numToString(unsigned int result, int count, int chop, int neg)
-{
-	int i;
-	char *output;
-
-	output = malloc(sizeof(char) * count + 1);
-	i = 0;
-	if (neg)
-	{
-		output[0] = '-';
-		i++;
-	}
-	for (; i < count; i++)
-	{
-		output[i] = ((result / chop) + '0');
-		result %= chop;
-		chop /= 10;
-	}
-	output[i] = '\0';
-	return(output);
-}
