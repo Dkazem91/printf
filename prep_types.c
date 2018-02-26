@@ -119,6 +119,11 @@ char *prep_string(char *str, specifier spec)
 	char *ret, *ptr, *hold = str;
 	unsigned int len;
 
+	if (str == NULL)
+	{
+		free(hold);
+		return (null());
+	}
 	len = _strlen(str);
 	if (len > spec.precision && spec.precisionflag == 1)
 		len = spec.precision;

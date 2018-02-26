@@ -66,6 +66,7 @@ char *itoX(va_list list);
 char *rev(char *str);
 char *rot(char *str);
 char *print_hidden(char *str);
+char *null(void);
 
 /* from ptos.c */
 char *nil(void);

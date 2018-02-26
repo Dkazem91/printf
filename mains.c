@@ -23,6 +23,8 @@ int main(void)
 		arr[i] = 'a';
 	#ifndef HIDECANON
 	_printf("Formatting and min/max tests\n");
+	printf("%%s NULL:%s\n", NULL);
+	_printf("%%s NULL:%s\n", NULL);
 	printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	_printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
