@@ -168,22 +168,26 @@ int _printf(char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			spec = get_specifier(&format);
-			freeflag = 0;
-			tmp = stringize_arg(list, spec, &freeflag);
-			ptr = tmp;
-			while (*ptr)
+			if (*format)
 			{
-				buffer[len++] = *ptr++;
-				if (len == 1024)
+				spec = get_specifier(&format);
+				freeflag = 0;
+			
+				tmp = stringize_arg(list, spec, &freeflag);
+				ptr = tmp;
+				while (*ptr)
 				{
-					write(1, buffer, 1024);
-					len = 0;
-					printtotal += 1024;
+					buffer[len++] = *ptr++;
+					if (len == 1024)
+					{
+						write(1, buffer, 1024);
+						len = 0;
+						printtotal += 1024;
+					}
 				}
+				if (freeflag)
+					free(tmp);
 			}
-			if (freeflag)
-				free(tmp);
 		}
 		else
 			printtotal += buffer_const_char(&format, buffer, &len);

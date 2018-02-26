@@ -23,6 +23,10 @@ int main(void)
 		arr[i] = 'a';
 	#ifndef HIDECANON
 	_printf("Formatting and min/max tests\n");
+	printf("%%%%%% %%%");
+	printf("\n");
+	_printf("%%%%%% %%%");
+	_printf("\n");
 	printf("%%s NULL:%s\n", NULL);
 	_printf("%%s NULL:%s\n", NULL);
 	_printf("%%r NULL:%r\n", NULL);
