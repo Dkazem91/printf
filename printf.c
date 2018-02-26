@@ -190,5 +190,6 @@ int _printf(char *format, ...)
 	}
 	write(1, buffer, len);
 	printtotal += len;
+	va_end(list);
 	return (printtotal);
 }
