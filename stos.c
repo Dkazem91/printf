@@ -13,6 +13,8 @@ char *rev(char *str)
 	int i = 0, len;
 	char tmp, *ret, *ptr;
 
+	if (str == NULL)
+		return (null());
 	len = _strlen(str);
 	ret = malloc(len + 1);
 	ret[len] = 0;
@@ -35,6 +37,8 @@ char *rot(char *str)
 	int i, j, len;
 	char *copy;
 
+	if (str == NULL)
+		return (null());
 	len = _strlen(str);
 	copy = malloc(sizeof(char) * (len + 1));
 	copy[len] = 0;
@@ -64,6 +68,8 @@ char *print_hidden(char *str)
 	char *output, *ptr;
 	int i, len = 0;
 
+	if (str == NULL)
+		return (null());
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (str[i] < 32 || str[i] >= 127)
