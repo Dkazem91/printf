@@ -1,7 +1,7 @@
 #include "holberton.h"
 #include <stdarg.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * prep_numeric - prepares a numeric string for printf
  *
@@ -16,9 +16,14 @@ char *prep_numeric(char *str, specifier spec)
 	unsigned int len, digits, xtype = 0;
 	char fill = ' ', sign = 0;
 
-	if (spec.specifier == 'b' || spec.specifier == 'x'
-	    || spec.specifier == 'X')
+	setbuf(stdout, NULL);
+	if (spec.specifier == 'p' && *str == 0)
+		return (nil());
+	if (spec.specifier == 'b' || spec.specifier == 'x' ||
+	    spec.specifier == 'X' || spec.specifier == 'p')
 		xtype = 1;
+	if (spec.specifier == 'p')
+		spec.specifier = 'x';
 	digits = _strlen(str);
 	len = digits;
 	if (spec.zero == 1 && spec.left == 0 && spec.precisionflag == 0)
