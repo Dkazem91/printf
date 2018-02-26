@@ -333,9 +333,9 @@ int main(void)
 	_printf("%s%#030u\n", "UInt max #030u:", UINT_MAX);
 	printf("%s%#.0u\n", "UInt max #.0u:", UINT_MAX);
 	_printf("%s%#.0u\n", "UInt max #.0u:", UINT_MAX);
-	printf("%s%#.0u\n", "UInt 0 #.0u: real printf", 0);
+	printf("%s%#.0u\n", "UInt 0 #.0u:", 0);
 	_printf("%s%#.0u\n", "UInt 0 #.0u:", 0);
-	printf("%s%#0.0u\n", "UInt 0 #0.0u: real printf", 0);
+	printf("%s%#0.0u\n", "UInt 0 #0.0u:", 0);
 	_printf("%s%#0.0u\n", "UInt 0 #0.0u:", 0);
 	printf("%s%.0u\n", "UInt 0 .0u:", 0);
 	_printf("%s%.0u\n", "UInt 0 .0u:", 0);
@@ -508,11 +508,11 @@ int main(void)
 	_printf("%s%#.0o\n", "UInt max #.0o:", UINT_MAX);
 	printf("%s%#0.0o\n", "UInt max #0.0o:", UINT_MAX);
 	_printf("%s%#0.0o\n", "UInt max #0.0o:", UINT_MAX);
-	printf("%s%.0o\n", "UInt 0 .0o: real", 0);
+	printf("%s%.0o\n", "UInt 0 .0o:", 0);
 	_printf("%s%.0o\n", "UInt 0 .0o:", 0);
-	printf("%s%+.0o\n", "UInt 0 +.0o: real", 0);
+	printf("%s%+.0o\n", "UInt 0 +.0o:", 0);
 	_printf("%s%+.0o\n", "UInt 0 +.0o:", 0);
-	printf("%s%0.0o\n", "UInt 0 0.0o: real", 0);
+	printf("%s%0.0o\n", "UInt 0 0.0o:", 0);
 	_printf("%s%0.0o\n", "UInt 0 0.0o:", 0);
 	printf("%s%o\n", "UInt 0 o:", 0);
 	_printf("%s%o\n", "UInt 0 o:", 0);
