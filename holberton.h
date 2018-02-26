@@ -57,12 +57,17 @@ char *itoo(va_list list);
 
 /* from itox.c */
 char *itox(va_list list);
+char *litox(va_list list);
 
 /* from itox.c */
 char *itoX(va_list list);
 
 /* from stos.c */
 char *rev(char *str);
-/* from stos.c */
 char *rot(char *str);
+char *print_hidden(char *str);
+
+/* from ptos.c */
+char *nil(void);
+
 #endif
