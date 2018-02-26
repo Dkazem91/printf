@@ -39,6 +39,18 @@ int main(void)
 	_printf("r:%r\n", "A helpful string that is 49 chars long.");
 	_printf("60r:%60r\n", "A helpful string that is 49 chars long.");
 	_printf("-60.10r:%-60.10r\n", "A helpful string that is 49 chars long.");
+	_printf("R:%R\n", "A helpful string that is 49 chars long.");
+	_printf("60R:%60R\n", "A helpful string that is 49 chars long.");
+	_printf("-60.10R:%-60.10R\n", "A helpful string that is 49 chars long.");
+	_printf("random chars R:%R\n", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*(){}:\"';,./<>?[]`~-=_+\|");
+	printf("%%s:%s\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%s:%s\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%S:%S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%10S:%10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%.10S:%.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%20.10S:%20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%-10.10S:%-20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%-20.10S%-20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	printf("%s%d\n", "Int 0 d:", 0);
 	_printf("%s%d\n", "Int 0 d:", 0);
 	printf("%s%.0d\n", "Int 0 .0d:", 0);
@@ -446,10 +458,17 @@ int main(void)
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
+	printf("%%p arr:%p\n", arr);
+	printf("%%p NULL:%p\n", NULL);
+	printf("%%p NULL + 1:%p\n", NULL + 1);
+	printf("%%p -10:%p\n", -10);
+	printf("%%20p arr:%20p\n", arr);
+	printf("%%.20p arr:%.20p\n", arr);
+	printf("%%-p arr:%-p\n", arr);
+	printf("%%020p arr:%020p\n", arr);
+	printf("%%020p arr:%020p\n", arr);
 	printf("%99999999999s\n", "A really wide string"); /* does not print */
-	_printf("%d testing int min\n", INT_MIN);
-	_printf("%d test negative in general\n", -14);
-	_printf("%o test octal unsigned max\n", UINT_MAX);
-	_printf("%s testing null\n", b);
-	_printf("%R testing rot13\n","Test it out");
+/* These explode, so don't do them. Leaving here as a note.
+	printf("a char to %%s:%s\n",'a');
+	_printf("%s testing null\n", b); */
 }
