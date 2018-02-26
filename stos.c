@@ -28,3 +28,25 @@ char *rev(char *str)
 	}
 	return (ret);
 }
+char *rot(char *str)
+{
+	char input[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char key[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
+	int i, j, len;
+	char *ret;
+
+	len = _strlen(str);
+	ret = malloc(sizeof(char) * (len + 1));
+	for (i = 0; i < len; i++)
+	{
+		for (j = 0; input[j] != '\0'; j++)
+		{
+			if(str[i] == input[j])
+				str[i] = key[j];
+		}
+		ret[i] = str[i];
+	}
+	ret[i] = '\0';
+
+	return (ret);
+}

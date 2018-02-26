@@ -10,6 +10,7 @@ int main(void)
 {
 	char numericspecs[7] = "duxXob";
 	char formatbuf[100];
+	char b = NULL;
 	int a;
 	char arr[2000];
 	int i=1999;
@@ -233,7 +234,6 @@ int main(void)
 	_printf("%s%-#030.20o\n", "Int max -#030.20o:", INT_MAX);
 	printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
 	_printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
-	#define INT_MAX __INT_MAX__
 	/* Put other test cases here */
 	_printf("Other test cases\n");
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
@@ -248,6 +248,8 @@ int main(void)
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	printf("%99999999999s\n", "A really wide string"); /* does not print */
 	_printf("%d testing int min\n", INT_MIN);
-	_printf("%d test negatie in general\n", -14);
+	_printf("%d test negative in general\n", -14);
 	_printf("%o test octal unsigned max\n", UINT_MAX);
+	_printf("%s testing null\n", b);
+	_printf("%R testing rot13\n","Test it out");
 }

@@ -63,5 +63,6 @@ char *itoX(va_list list);
 
 /* from stos.c */
 char *rev(char *str);
-
+/* from stos.c */
+char *rot(char *str);
 #endif
