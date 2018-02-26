@@ -5,9 +5,12 @@
 #include "holberton.h"
 char *itoo(va_list list)
 {
-	int digits, digitTest, count, i, mult, result;
+	unsigned int digits, digitTest;
+	int count, i;
+	unsigned long mult, result;
+	char* output;
 
-	digits = va_arg(list, int);
+	digits = va_arg(list, unsigned int);
 	count = 0;
 	mult = 1;
 	result = 0;
@@ -19,5 +22,15 @@ char *itoo(va_list list)
 		mult *=10;
 	        count++;
 	}
-	return (_numToString(result, count, (mult/10)));
+	output = malloc(sizeof(char) * count + 1);
+	mult /= 10;
+        for (i = 0; i < count; i++)
+        {
+                output[i] = ((result / mult) + '0');
+                result %= mult;
+		mult /= 10;
+        }
+        output[i] = '\0';
+	return(output);
+
 }

@@ -5,7 +5,8 @@
 #include "holberton.h"
 char *itox(va_list list)
 {
-	int digits, digitTest, count, i;
+	unsigned int digits, digitTest;
+	int count, i;
 	char *result;
 
 	digits = va_arg(list, int);
@@ -32,7 +33,8 @@ char *itox(va_list list)
 }
 char *itoX(va_list list)
 {
-	int digits, digitTest, count, i;
+	unsigned int digits, digitTest;
+	int count, i;
 	char *result;
 
 	digits = va_arg(list, int);

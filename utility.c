@@ -19,13 +19,19 @@ int _strlen(char *str)
 	return (len);
 }
 
-char * _numToString(int result, int count, int chop)
+char * _numToString(unsigned int result, int count, int chop, int neg)
 {
 	int i;
 	char *output;
 
 	output = malloc(sizeof(char) * count + 1);
-	for (i = 0; i < count; i++)
+	i = 0;
+	if (neg)
+	{
+		output[0] = '-';
+		i++;
+	}
+	for (; i < count; i++)
 	{
 		output[i] = ((result / chop) + '0');
 		result %= chop;

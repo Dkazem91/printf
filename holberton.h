@@ -41,7 +41,7 @@ char *prep_numeric(char *str, specifier spec);
 
 /* from utility.c */
 int _strlen(char *str);
-char * _numToString(int result, int count, int chop);
+char * _numToString(unsigned int result, int count, int chop, int neg);
 
 /* from itos.c */
 char *itos(va_list list);

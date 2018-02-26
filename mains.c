@@ -195,9 +195,8 @@ int main(void)
 	_printf("%s%-#030.20X\n", "Int max -#030.20X:", INT_MAX);
 	printf("%s%-#020.20X\n", "Int max -#020.20X:", INT_MAX);
 	_printf("%s%-#020.20X\n", "Int max -#020.20X:", INT_MAX);
-	#define INT_MAX 12341234
 	printf("%s%o\n", "Int max o:", INT_MAX);
-	_printf("%s%o\n", "Int max o:", INT_MAX);
+	_printf("%s%o\n", "Int max o: THIS ONE WHY", INT_MAX);
 	printf("%s%30o\n", "Int max 30o:", INT_MAX);
 	_printf("%s%30o\n", "Int max 30o:", INT_MAX);
 	printf("%s%-30o\n", "Int max -30o:", INT_MAX);
@@ -248,4 +247,7 @@ int main(void)
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	printf("%99999999999s\n", "A really wide string"); /* does not print */
+	_printf("%d testing int min\n", INT_MIN);
+	_printf("%d test negatie in general\n", -14);
+	_printf("%o test octal unsigned max\n", UINT_MAX);
 }
