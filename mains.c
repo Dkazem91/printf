@@ -4,14 +4,16 @@
 #include "holberton.h"
 #include <limits.h>
 
+/*#define HIDECANON*/
+
 int _printf(char *, ...);
 
 int main(void)
 {
-	char numericspecs[7] = "duxXob";
+/*	char numericspecs[7] = "duxXob";
 	char formatbuf[100];
 	char b = NULL;
-	int a;
+	int a;*/
 	char arr[2000];
 	int i=1999;
 
@@ -19,6 +21,7 @@ int main(void)
 	arr[1999] = 0;
 	while (i--)
 		arr[i] = 'a';
+	#ifndef HIDECANON
 	_printf("Formatting and min/max tests\n");
 	printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
 	_printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
@@ -47,10 +50,10 @@ int main(void)
 	_printf("%%s:%s\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%S:%S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	_printf("%%10S:%10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
-	_printf("%%.10S:%.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
-	_printf("%%20.10S:%20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
-	_printf("%%-10.10S:%-20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
-	_printf("%%-20.10S%-20.10S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%.11S:%.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%21.11S:%20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%-10.11S:%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
+	_printf("%%-20.11S%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	printf("%s%d\n", "Int 0 d:", 0);
 	_printf("%s%d\n", "Int 0 d:", 0);
 	printf("%s%.0d\n", "Int 0 .0d:", 0);
@@ -446,8 +449,31 @@ int main(void)
 	_printf("%s%-#030.20o\n", "Int max -#030.20o:", INT_MAX);
 	printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
 	_printf("%s%-#020.20o\n", "Int max -#020.20o:", INT_MAX);
-	/* Put other test cases here */
+	printf("%%p arr:%p\n", arr);
+	_printf("%%p arr:%p\n", arr);
+	printf("%%p NULL:%p\n", NULL);
+	_printf("%%p NULL:%p\n", NULL);
+	printf("%%20p NULL:%p\n", NULL);
+	_printf("%%20p NULL:%p\n", NULL);
+	printf("%%.20p NULL:%p\n", NULL);
+	_printf("%%.20p NULL:%p\n", NULL);
+	printf("%%p NULL + 1:%p\n", NULL + 1);
+	_printf("%%p NULL + 1:%p\n", NULL + 1);
+	printf("%%p -10:%p\n", -10);
+	_printf("%%p -10:%p\n", -10);
+	printf("%%20p arr:%20p\n", arr);
+	_printf("%%20p arr:%20p\n", arr);
+	printf("%%.20p arr:%.20p\n", arr);
+	_printf("%%.20p arr:%.20p\n", arr);
+	printf("%%-p arr:%-p\n", arr);
+	_printf("%%-p arr:%-p\n", arr);
+	printf("%%020p arr:%020p\n", arr);
+	_printf("%%020p arr:%020p\n", arr);
+	printf("%%020p arr:%020p\n", arr);
+	_printf("%%020p arr:%020p\n", arr);
+#endif	/* Put other test cases here */
 	_printf("Other test cases\n");
+/* Good enough for now. Hiding this output.
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
@@ -457,16 +483,7 @@ int main(void)
 	printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
-	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
-	printf("%%p arr:%p\n", arr);
-	printf("%%p NULL:%p\n", NULL);
-	printf("%%p NULL + 1:%p\n", NULL + 1);
-	printf("%%p -10:%p\n", -10);
-	printf("%%20p arr:%20p\n", arr);
-	printf("%%.20p arr:%.20p\n", arr);
-	printf("%%-p arr:%-p\n", arr);
-	printf("%%020p arr:%020p\n", arr);
-	printf("%%020p arr:%020p\n", arr);
+	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX); */
 	printf("%99999999999s\n", "A really wide string"); /* does not print */
 /* These explode, so don't do them. Leaving here as a note.
 	printf("a char to %%s:%s\n",'a');
