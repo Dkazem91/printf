@@ -66,6 +66,18 @@ int main(void)
 	_printf("%s%#0.0d\n", "Int 0 #0.0d:", 0);
 	printf("%s%#.1d\n", "Int 0 #.1d:", 0);
 	_printf("%s%#.1d\n", "Int 0 #.1d:", 0);
+	printf("%s%+d\n", "Int 0 +d:", 0);
+	_printf("%s%+d\n", "Int 0 +d:", 0);
+	printf("%s%+.0d\n", "Int 0 +.0d:", 0);
+	_printf("%s%+.0d\n", "Int 0 +.0d:", 0);
+	printf("%s%0+.0d\n", "Int 0 +0.0d:", 0);
+	_printf("%s%+0.0d\n", "Int 0 +0.0d:", 0);
+	printf("%s%#+.0d\n", "Int 0 #+.0d:", 0);
+	_printf("%s%#+.0d\n", "Int 0 #+.0d:", 0);
+	printf("%s%#+0.0d\n", "Int 0 #+0.0d:", 0);
+	_printf("%s%#+0.0d\n", "Int 0 #+0.0d:", 0);
+	printf("%s%#+.1d\n", "Int 0 #+.1d:", 0);
+	_printf("%s%#+.1d\n", "Int 0 #+.1d:", 0);
 	printf("%s%d\n", "Int max d:", INT_MAX);
 	_printf("%s%d\n", "Int max d:", INT_MAX);
 	printf("%s%30d\n", "Int max 30d:", INT_MAX);
