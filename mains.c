@@ -61,10 +61,10 @@ int main(void)
 	_printf("%%-20.11S:%-20.11S\n", "a newline:\n, a tab:\t, a backspace:\x7f");
 	printf("%s%d\n", "Int 0 d:", 0);
 	_printf("%s%d\n", "Int 0 d:", 0);
-	printf("%s%.0d\n", "Int 0 .0d:", 0);
-	_printf("%s%.0d\n", "Int 0 .0d:", 0);
-	printf("%s%0.0d\n", "Int 0 0.0d:", 0);
-	_printf("%s%0.0d\n", "Int 0 0.0d:", 0);
+	printf("%s%.d\n", "Int 0 .d:", 0);
+	_printf("%s%.d\n", "Int 0 .d:", 0);
+	printf("%s%0.d\n", "Int 0 0.d:", 0);
+	_printf("%s%0.d\n", "Int 0 0.d:", 0);
 	printf("%s%#.0d\n", "Int 0 #.0d:", 0);
 	_printf("%s%#.0d\n", "Int 0 #.0d:", 0);
 	printf("%s%#0.0d\n", "Int 0 #0.0d:", 0);
@@ -77,8 +77,8 @@ int main(void)
 	_printf("%s%+.0d\n", "Int 0 +.0d:", 0);
 	printf("%s%0+.0d\n", "Int 0 +0.0d:", 0);
 	_printf("%s%+0.0d\n", "Int 0 +0.0d:", 0);
-	printf("%s%#+.0d\n", "Int 0 #+.0d:", 0);
-	_printf("%s%#+.0d\n", "Int 0 #+.0d:", 0);
+	printf("%s%#+.d\n", "Int 0 #+.d:", 0);
+	_printf("%s%#+.d\n", "Int 0 #+.d:", 0);
 	printf("%s%#+0.0d\n", "Int 0 #+0.0d:", 0);
 	_printf("%s%#+0.0d\n", "Int 0 #+0.0d:", 0);
 	printf("%s%#+.1d\n", "Int 0 #+.1d:", 0);
