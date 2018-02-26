@@ -33,20 +33,28 @@ char *rot(char *str)
 	char input[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char key[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 	int i, j, len;
-	char *ret;
+	char *copy;
 
 	len = _strlen(str);
-	ret = malloc(sizeof(char) * (len + 1));
+	copy = malloc(sizeof(char) * (len + 1));
+	copy[len] = 0;
+	i = 0;
+	while(str[i])
+	{
+		copy[i] = str[i];
+		i++;
+	}
 	for (i = 0; i < len; i++)
 	{
 		for (j = 0; input[j] != '\0'; j++)
 		{
-			if(str[i] == input[j])
-				str[i] = key[j];
+			if(copy[i] == input[j])
+			{
+				copy[i] = key[j];
+				break;
+			}
 		}
-		ret[i] = str[i];
 	}
-	ret[i] = '\0';
 
-	return (ret);
+	return (copy);
 }
