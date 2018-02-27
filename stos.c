@@ -43,7 +43,7 @@ char *rot(char *str)
 		return (null());
 	len = _strlen(str);
 	copy = malloc(sizeof(char) * (len + 1));
-	if (ret == NULL)
+	if (copy == NULL)
 		return (NULL);
 	copy[len] = 0;
 	i = 0;
@@ -81,7 +81,7 @@ char *print_hidden(char *str)
 		len++;
 	}
 	output = malloc(sizeof(char) * (len + 1));
-	if (ret == NULL)
+	if (output == NULL)
 		return (NULL);
 	for (ptr = output; *str; str++)
 	{
