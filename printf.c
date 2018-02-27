@@ -49,6 +49,12 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (prep_numeric(itos(list), spec));
 	case 'b':
 		*freeflag = 1;
+		if (spec.length == 1)
+			return (prep_numeric(luitob(list), spec));
+		if (spec.length == -1)
+			return (prep_numeric(huitob(list), spec));
+		if (spec.length < -1)
+			return (prep_numeric(hhuitob(list), spec));
 		return (prep_numeric(uitob(list), spec));
 	case 'u':
 		*freeflag = 1;
@@ -62,6 +68,12 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 
 	case 'o':
 		*freeflag = 1;
+		if (spec.length == 1)
+			return (prep_numeric(litoo(list), spec));
+		if (spec.length == -1)
+			return (prep_numeric(hitoo(list), spec));
+		if (spec.length < -1)
+			return (prep_numeric(hhitoo(list), spec));
 		return (prep_numeric(itoo(list), spec));
 	case 'x':
 		*freeflag = 1;

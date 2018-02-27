@@ -400,6 +400,13 @@ int main(void)
 	printf("%s%-#020.20u\n", "UInt max -#020.20u:", UINT_MAX);
 	_printf("%s%-#020.20u\n", "UInt max -#020.20u:", UINT_MAX);
 	_printf("%s%b\n", "UInt max b:", UINT_MAX);
+	_printf("%s%b\n", "UInt max b:", UINT_MAX);
+	_printf("%s%lb\n", "ULONG max lb:", ULONG_MAX);
+	_printf("%s%hb\n", "Ushrt max b:", USHRT_MAX);
+	_printf("%s%hhb\n", "255 b:", 255);
+	_printf("%s%lb\n", "ULONG max + 1 lb:", ULONG_MAX + 1);
+	_printf("%s%hb\n", "Ushrt max + 1 b:", USHRT_MAX + 1);
+	_printf("%s%hhb\n", "256 b:", 256);
 	_printf("%s%b\n", "UInt max + 1 b:", UINT_MAX + 1);
 	_printf("%s%40b\n", "UInt max 40b:", UINT_MAX);
 	_printf("%s%40b\n", "UInt max .20b:", UINT_MAX);

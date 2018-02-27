@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
+
 char *itoo(va_list list)
 {
 	unsigned int digits, digitTest;
@@ -10,6 +11,81 @@ char *itoo(va_list list)
 	char* output;
 
 	digits = va_arg(list, unsigned int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+	        count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+        for (i = count - 1; i >= 0; i--)
+        {
+                output[i] = ((digitTest % 8) + '0');
+                digitTest /= 8;
+        }
+        output[count] = '\0';
+	return(output);
+}
+
+char *litoo(va_list list)
+{
+	unsigned long int digits, digitTest;
+	int count, i;
+	char* output;
+
+	digits = va_arg(list, unsigned long int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+	        count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+        for (i = count - 1; i >= 0; i--)
+        {
+                output[i] = ((digitTest % 8) + '0');
+                digitTest /= 8;
+        }
+        output[count] = '\0';
+	return(output);
+}
+
+char *hitoo(va_list list)
+{
+	unsigned short int digits, digitTest;
+	int count, i;
+	char* output;
+
+	digits = (unsigned short) va_arg(list, unsigned int);
+	count = 0;
+	digitTest = digits;
+	while (digitTest > 0)
+	{
+		digitTest /= 8;
+	        count++;
+	}
+	digitTest = digits;
+	output = malloc(sizeof(char) * count + 1);
+        for (i = count - 1; i >= 0; i--)
+        {
+                output[i] = ((digitTest % 8) + '0');
+                digitTest /= 8;
+        }
+        output[count] = '\0';
+	return(output);
+}
+
+char *hhitoo(va_list list)
+{
+	unsigned char digits, digitTest;
+	int count, i;
+	char* output;
+
+	digits = (unsigned char) va_arg(list, unsigned int);
 	count = 0;
 	digitTest = digits;
 	while (digitTest > 0)
