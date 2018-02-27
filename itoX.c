@@ -64,7 +64,7 @@ char *litoX(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+/*
 char *llitoX(va_list list)
 {
 	unsigned long long int digits, digitTest;
@@ -93,14 +93,14 @@ char *llitoX(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+*/
 char *hitoX(va_list list)
 {
 	unsigned short int digits, digitTest;
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, short int);
+	digits = va_arg(list, int);
 	count = 0;
 	digitTest = digits;
 	while (digitTest > 0)
@@ -123,7 +123,7 @@ char *hitoX(va_list list)
 	return (result);
 }
 
-
+/*
 char *hhitoX(va_list list)
 {
 	char digits, digitTest;
@@ -152,3 +152,4 @@ char *hhitoX(va_list list)
 	result[count] = '\0';
 	return (result);
 }
+*/

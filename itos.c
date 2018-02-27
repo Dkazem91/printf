@@ -72,6 +72,7 @@ char *litos(va_list list)
 
 }
 
+/*
 char *llitos(va_list list)
 {
         int count, i, neg, absMod;
@@ -106,14 +107,14 @@ char *llitos(va_list list)
 	return(output);
 
 }
-
+*/
 char *hitos(va_list list)
 {
         int count, i, neg, absMod;
 	short int digits, digitTest;
 	char* output;
 
-	digits = va_arg(list, short int);
+	digits = va_arg(list, int);
 	digitTest = digits;
 	count = 0;
 	neg = 0;
@@ -141,7 +142,7 @@ char *hitos(va_list list)
 	return(output);
 
 }
-
+/*
 char *hhitos(va_list list)
 {
         int count, i, neg, absMod;
@@ -176,3 +177,4 @@ char *hhitos(va_list list)
 	return(output);
 
 }
+*/

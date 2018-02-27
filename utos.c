@@ -51,7 +51,7 @@ char *lutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+/*
 char *llutos(va_list list)
 {
 	unsigned long long int digits, digitTest;
@@ -76,14 +76,14 @@ char *llutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+*/
 char *hutos(va_list list)
 {
 	unsigned short int digits, digitTest;
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, unsigned short int);
+	digits = va_arg(list, unsigned int);
 	digitTest = digits;
 	count = 0;
 	while (digitTest > 0)
@@ -101,7 +101,7 @@ char *hutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+/*
 char *hhutos(va_list list)
 {
 	char digits, digitTest;
@@ -126,3 +126,4 @@ char *hhutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
+*/

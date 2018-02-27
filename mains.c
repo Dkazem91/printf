@@ -609,6 +609,7 @@ int main(void)
 #endif	/* Put other test cases here */
 	_printf("Other test cases\n");
 	_printf("%x\n", 0);
+	printf("%%.n:%.n");
 /* Good enough for now. Hiding this output.
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
