@@ -44,12 +44,16 @@ int _strlen(char *str);
 
 /* from itos.c */
 char *itos(va_list list);
+char *hitos(va_list list);
+char *litos(va_list list);
 
 /* from uitob.c */
 char *uitob(va_list list);
 
 /* from utos.c */
 char *utos(va_list list);
+char *hutos(va_list list);
+char *lutos(va_list list);
 
 /* from itoo.c */
 char *itoo(va_list list);
@@ -57,10 +61,12 @@ char *itoo(va_list list);
 /* from itox.c */
 char *itox(va_list list);
 char *litox(va_list list);
-char *llitox(va_list list);
 char *hitox(va_list list);
+
 /* from itox.c */
 char *itoX(va_list list);
+char *hitoX(va_list list);
+char *litoX(va_list list);
 
 /* from stos.c */
 char *rev(char *str);
