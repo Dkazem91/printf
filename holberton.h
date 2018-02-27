@@ -50,6 +50,9 @@ char *hhitos(va_list list);
 
 /* from uitob.c */
 char *uitob(va_list list);
+char *luitob(va_list list);
+char *huitob(va_list list);
+char *hhuitob(va_list list);
 
 /* from utos.c */
 char *utos(va_list list);
@@ -59,6 +62,9 @@ char *lutos(va_list list);
 
 /* from itoo.c */
 char *itoo(va_list list);
+char *litoo(va_list list);
+char *hitoo(va_list list);
+char *hhitoo(va_list list);
 
 /* from itox.c */
 char *itox(va_list list);
