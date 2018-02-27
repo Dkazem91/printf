@@ -40,21 +40,40 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	case 'd':
 	case 'i':
 		*freeflag = 1;
+		if(spec.length == 1)
+			return (prep_numeric(litos(list), spec));
+		if(spec.length == -1)
+			return (prep_numeric(hitos(list), spec));
+		if(spec.length < -1)
+			return (prep_numeric(hhitos(list), spec));
 		return (prep_numeric(itos(list), spec));
 	case 'b':
 		*freeflag = 1;
 		return (prep_numeric(uitob(list), spec));
 	case 'u':
 		*freeflag = 1;
+		if(spec.length == 1)
+			return (prep_numeric(lutos(list), spec));
+		if (spec.length == -1)
+			return (prep_numeric(hutos(list), spec));
 		return (prep_numeric(utos(list), spec));
+
 	case 'o':
 		*freeflag = 1;
 		return (prep_numeric(itoo(list), spec));
 	case 'x':
 		*freeflag = 1;
+		if(spec.length == 1)
+			return (prep_numeric(litox(list), spec));
+		if(spec.length == -1)
+			return (prep_numeric(hitox(list), spec));
 		return (prep_numeric(itox(list), spec));
 	case 'X':
 		*freeflag = 1;
+		if(spec.length == 1)
+			return (prep_numeric(litoX(list), spec));
+		if(spec.length == -1)
+			return (prep_numeric(hitoX(list), spec));
 		return (prep_numeric(itoX(list), spec));
 	case 'r':
 		*freeflag = 1;
@@ -125,12 +144,17 @@ specifier get_specifier(char **format)
 	while (**format == 'l')
 	{
 		(*format)++;
-		spec.length++;
+		if (spec.length >= 0)
+			spec.length = 1;
+		else
+			spec.length = 10;
 	}
 	spec.specifier = **format;
 	if (**format == 'p')
 		spec.zerox = 1;
-	switch (**format)
+	if (spec.length == 10)
+		spec.specifier = 'z';
+	switch (spec.specifier)
 	{
 	case '%': case 's': case 'c': case 'i': case 'd':
 	case 'x': case 'X': case 'b': case 'o': case 'u':
@@ -138,7 +162,7 @@ specifier get_specifier(char **format)
 		(*format)++;
 		break;
 	default:
-		*format = start;
+		*format = start + 1;
 		spec.specifier = '%';
 		break;
 	}

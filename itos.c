@@ -142,14 +142,14 @@ char *hitos(va_list list)
 	return(output);
 
 }
-/*
+
 char *hhitos(va_list list)
 {
         int count, i, neg, absMod;
         char digits, digitTest;
 	char* output;
 
-	digits = va_arg(list, char);
+	digits = (char) va_arg(list, int);
 	digitTest = digits;
 	count = 0;
 	neg = 0;
@@ -177,4 +177,4 @@ char *hhitos(va_list list)
 	return(output);
 
 }
-*/
+

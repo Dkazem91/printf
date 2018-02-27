@@ -101,14 +101,14 @@ char *hutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-/*
+
 char *hhutos(va_list list)
 {
-	char digits, digitTest;
+	unsigned char digits, digitTest;
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, char);
+	digits = (unsigned char) va_arg(list, unsigned int);
 	digitTest = digits;
 	count = 0;
 	while (digitTest > 0)
@@ -126,4 +126,3 @@ char *hhutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-*/
