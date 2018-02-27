@@ -1,0 +1,48 @@
+.TH _printf 1 "February 2018" "" "User Commands"
+.SH NAME
+.B _printf
+- format and print data.
+.SH SYNOPSIS
+.B _printf
+- \fIFORMAT\fR [\fIARGUMENT\fR]
+...
+.SH DESCRIPTION
+Print ARGUMENT(s) according to FORMAT:
+
+FORMAT is the string that is printed out on the command line. Interpreted sequences are:
+
+\\\*(rq  double quote
+
+\\\ backslash
+
+\\a alert
+
+\\b backspace
+
+\\c produce no further output
+
+\\e escape
+
+\\f form feed
+
+\\n new line
+
+\\r carriage return
+
+\\t horizontal tab
+
+\\v vertical tab
+
+\\NNN byte with octal value NNN (1 to 3 digits)
+
+\\xHH byte with hexadecimal value HH (1 to 2 digits)
+
+\\uHHH unicode character with hex value HHHH
+
+\\uHHHHHHHH \n Unicode Character with hex value HHHHHHHH
+
+%% a single %
+
+all conversion specifiers start with a % sign, any modifiers (+,-,' ',#,0,l,h), and then the specifier (c,s,d,i,o,u,x,X,p,r,R,S). The ARGUMENT is converted to the proper type first and then modifiers are handled.
+.SH AUTHOR
+Sidney Burkett, Daniel Kazemian
