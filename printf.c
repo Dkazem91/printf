@@ -193,8 +193,9 @@ specifier get_specifier(char **format)
 int _printf(char *format, ...)
 {
 	char *tmp = 0, *ptr = 0, buffer[1024];
-	unsigned int len = 0, freeflag = 0, charzero;
+	unsigned int len =  0, freeflag = 0, charzero;
 	unsigned long int printtotal = 0;
+	long int lenr = 0;
 	va_list list;
 	specifier spec;
 
@@ -228,9 +229,11 @@ int _printf(char *format, ...)
 				charzero = 1;
 				if (len == 1024)
 				{
-					write(1, buffer, 1024);
+					lenr = write(1, buffer, 1024);
+					if (lenr == -1)
+						return (-1);
+					printtotal += lenr;
 					len = 0;
-					printtotal += 1024;
 				}
 			}
 			if (tmp[0] == 0)
@@ -241,8 +244,10 @@ int _printf(char *format, ...)
 		else
 			printtotal += buffer_const_char(&format, buffer, &len);
 	}
-	write(1, buffer, len);
-	printtotal += len;
+	lenr = write(1, buffer, len);
+	if (lenr == -1)
+		return (-1);
+	printtotal += lenr;
 	va_end(list);
 	if (tmp == NULL)
 		return (-1);
