@@ -179,7 +179,7 @@ specifier get_specifier(char **format)
 	{
 	case '%': case 's': case 'c': case 'i': case 'd':
 	case 'x': case 'X': case 'b': case 'o': case 'u':
-	case 'R': case 'r': case 'S': case 'p': case 'n':
+	case 'R': case 'r': case 'S': case 'p':
 		(*format)++;
 		break;
 	default:
