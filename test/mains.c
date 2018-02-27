@@ -1,10 +1,10 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "holberton.h"
+#include "../holberton.h"
 #include <limits.h>
 
-/*#define HIDECANON*/
+#define HIDECANON
 
 int _printf(char *, ...);
 
@@ -696,7 +696,7 @@ int main(void)
 #endif	/* Put other test cases here */
 	_printf("Other test cases\n");
 	_printf("%x\n", 0);
-	printf("%%.n:%.n");
+	printf("%%.n:%.n\n");
 /* Good enough for now. Hiding this output.
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
@@ -708,7 +708,10 @@ int main(void)
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX); */
-	printf("%99999999999s\n", "A really wide string"); /* does not print */
+	printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
+	printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
 /* These explode, so don't do them. Leaving here as a note.
 	printf("a char to %%s:%s\n",'a');
 	_printf("%s testing null\n", b); */

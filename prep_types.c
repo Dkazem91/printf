@@ -17,6 +17,11 @@ char *prep_numeric(char *str, specifier spec)
 	char fill = ' ', sign = 0;
 
 	setbuf(stdout, NULL);
+	if (str == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	if (spec.specifier == 'p' && *str == 0)
 	{
 		free(hold);
@@ -75,6 +80,11 @@ char *prep_numeric(char *str, specifier spec)
 	if (sign)
 		len++;
 	ret = malloc((len + 1) * sizeof(char));
+	if (ret == NULL)
+	{
+		errorcode = 255;
+		return (NULL);
+	}
 	ptr = ret;
 	if (spec.zerox == 1 && (fill == '0' || spec.left == 1) && *str)
 	{

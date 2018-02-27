@@ -19,6 +19,11 @@ char *uitob(va_list list)
 		counter++;
 	}
 	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	uiArgTest = uiArg;
 	for (i = counter - 1; i >= 0; i--)
 	{
@@ -45,6 +50,11 @@ char *luitob(va_list list)
 		counter++;
 	}
 	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	uiArgTest = uiArg;
 	for (i = counter - 1; i >= 0; i--)
 	{
@@ -71,6 +81,11 @@ char *huitob(va_list list)
 		counter++;
 	}
 	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	uiArgTest = uiArg;
 	for (i = counter - 1; i >= 0; i--)
 	{
@@ -97,6 +112,11 @@ char *hhuitob(va_list list)
 		counter++;
 	}
 	result = malloc(sizeof(char) * (counter + 1));
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	uiArgTest = uiArg;
 	for (i = counter - 1; i >= 0; i--)
 	{

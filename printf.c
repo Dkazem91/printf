@@ -28,6 +28,9 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 
 	switch (spec.specifier)
 	{
+	case 'n':
+		tmpstr[0] = 0;
+		return tmpstr;
 	case '%':
 		tmpstr[0] = '%';
 		return (tmpstr);
@@ -176,7 +179,7 @@ specifier get_specifier(char **format)
 	{
 	case '%': case 's': case 'c': case 'i': case 'd':
 	case 'x': case 'X': case 'b': case 'o': case 'u':
-	case 'R': case 'r': case 'S': case 'p':
+	case 'R': case 'r': case 'S': case 'p': case 'n':
 		(*format)++;
 		break;
 	default:
@@ -195,6 +198,7 @@ int _printf(char *format, ...)
 	va_list list;
 	specifier spec;
 
+	errorcode = 0;
 	va_start(list, format);
 	while (*format)
 	{
@@ -207,6 +211,8 @@ int _printf(char *format, ...)
 			freeflag = 0;
 
 			tmp = stringize_arg(list, spec, &freeflag);
+			if (tmp == NULL)
+				return (errorcode);
 			ptr = tmp;
 			while (*ptr)
 			{
@@ -227,5 +233,5 @@ int _printf(char *format, ...)
 	write(1, buffer, len);
 	printtotal += len;
 	va_end(list);
-	return (printtotal);
+		return (printtotal);
 }

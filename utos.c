@@ -19,6 +19,11 @@ char *utos(va_list list)
 	}
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -43,6 +48,11 @@ char *lutos(va_list list)
 	}
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -93,6 +103,11 @@ char *hutos(va_list list)
 	}
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -118,6 +133,11 @@ char *hhutos(va_list list)
 	}
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');

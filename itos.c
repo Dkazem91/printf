@@ -23,6 +23,11 @@ char *itos(va_list list)
 		count++;
 	}
         output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
         if (neg)
                 output[0] = '-';
 	digitTest = digits;
@@ -58,6 +63,11 @@ char *litos(va_list list)
 		count++;
 	}
         output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
         if (neg)
                 output[0] = '-';
 	digitTest = digits;
@@ -129,6 +139,11 @@ char *hitos(va_list list)
 		count++;
 	}
         output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
         if (neg)
                 output[0] = '-';
 	digitTest = digits;
@@ -164,6 +179,11 @@ char *hhitos(va_list list)
 		count++;
 	}
         output = malloc(sizeof(char) * count + 1);
+	if (output == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
         if (neg)
                 output[0] = '-';
 	digitTest = digits;
@@ -177,4 +197,3 @@ char *hhitos(va_list list)
 	return(output);
 
 }
-

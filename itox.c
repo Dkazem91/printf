@@ -19,6 +19,11 @@ char *itox(va_list list)
 	}
 
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	digitTest = digits;
 	for (i = count - 1; i >= 0; i--)
 	{
@@ -48,6 +53,11 @@ char *litox(va_list list)
 	}
 
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	digitTest = digits;
 	for (i = count - 1; i >= 0; i--)
 	{
@@ -106,6 +116,11 @@ char *hitox(va_list list)
 	}
 
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	digitTest = digits;
 	for(i = count - 1; i >= 0; i--)
 	{
@@ -135,6 +150,11 @@ char *hhitox(va_list list)
 	}
 
 	result = malloc(sizeof(char) * count + 1);
+	if (result == NULL)
+	{
+		errorcode = -1;
+		return (NULL);
+	}
 	digitTest = digits;
 	for(i = count - 1; i >= 0; i--)
 	{
