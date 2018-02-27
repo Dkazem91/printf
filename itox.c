@@ -96,7 +96,7 @@ char *hitox(va_list list)
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, unsigned int);
+	digits = (unsigned short) va_arg(list, unsigned int);
 	count = 0;
 	digitTest = digits;
 	while (digitTest > 0)
@@ -121,11 +121,11 @@ char *hitox(va_list list)
 
 char *hhitox(va_list list)
 {
-	char digits, digitTest;
+	unsigned char digits, digitTest;
 	int count, i;
 	char *result;
 
-	digits = (char) va_arg(list, unsigned int);
+	digits = (unsigned char) va_arg(list, unsigned int);
 	count = 0;
 	digitTest = digits;
 	while (digitTest > 0)

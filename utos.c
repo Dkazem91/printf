@@ -83,7 +83,7 @@ char *hutos(va_list list)
 	int count, i;
 	char *result;
 
-	digits = va_arg(list, unsigned int);
+	digits = (unsigned short) va_arg(list, unsigned int);
 	digitTest = digits;
 	count = 0;
 	while (digitTest > 0)
