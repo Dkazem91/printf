@@ -31,8 +31,8 @@ int main(void)
 	printf("return value%d\n", _printf("%%R NULL:%R\n", NULL));
 	printf("return value%d\n", printf("%%S NULL:%S\n", NULL));
 	printf("return value%d\n", _printf("%%S NULL:%S\n", NULL));
-	printf("%ss\n", str);
-	_printf("%ss\n", str);
+	printf("return value%d\n",printf("%ss\n", str));
+	printf("return value%d\n",_printf("%ss\n", str));
 	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
@@ -725,18 +725,19 @@ int main(void)
 	printf("\n");
 	printf("%d",_printf("_printf % %"));
 	printf("\n");
-/* Good enough for now. Hiding this output.
+/* Good enough for now. Hiding this output. */
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
 	_printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
-	printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
+/*	printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
 	_printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
 	printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
-	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX); */
-/* These explode, so don't do them. Leaving here as a note.
+	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);*/
+	printf("character to %%s test\n");
+	printf("character to %s test\n");
+	_printf("a char to %%s:%s\n",'a');
 	printf("a char to %%s:%s\n",'a');
-	_printf("%s testing null\n", b); */
 }

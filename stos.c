@@ -17,6 +17,8 @@ char *rev(char *str)
 		return (null());
 	len = _strlen(str);
 	ret = malloc(len + 1);
+	if (ret == NULL)
+		return (NULL);
 	ret[len] = 0;
 	ptr = ret;
 	while (*str)
@@ -41,6 +43,8 @@ char *rot(char *str)
 		return (null());
 	len = _strlen(str);
 	copy = malloc(sizeof(char) * (len + 1));
+	if (ret == NULL)
+		return (NULL);
 	copy[len] = 0;
 	i = 0;
 	while (str[i])
@@ -77,6 +81,8 @@ char *print_hidden(char *str)
 		len++;
 	}
 	output = malloc(sizeof(char) * (len + 1));
+	if (ret == NULL)
+		return (NULL);
 	for (ptr = output; *str; str++)
 	{
 		if (*str < 32 || *str >= 127)
