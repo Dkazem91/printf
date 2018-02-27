@@ -193,7 +193,7 @@ specifier get_specifier(char **format)
 int _printf(char *format, ...)
 {
 	char *tmp = 0, *ptr = 0, buffer[1024];
-	unsigned int len = 0, freeflag = 0;
+	unsigned int len = 0, freeflag = 0, charzero;
 	unsigned long int printtotal = 0;
 	va_list list;
 	specifier spec;
@@ -216,14 +216,16 @@ int _printf(char *format, ...)
 				break;
 			spec = get_specifier(&format);
 			freeflag = 0;
+			charzero = 0;
 
 			tmp = stringize_arg(list, spec, &freeflag);
 			if (tmp == NULL)
 				break;
 			ptr = tmp;
-			while (*ptr)
+			while (*ptr || (charzero == 0 && spec.specifier == 'c'))
 			{
 				buffer[len++] = *ptr++;
+				charzero = 1;
 				if (len == 1024)
 				{
 					write(1, buffer, 1024);
@@ -231,6 +233,8 @@ int _printf(char *format, ...)
 					printtotal += 1024;
 				}
 			}
+			if (tmp[0] == 0)
+				
 			if (freeflag)
 				free(tmp);
 		}

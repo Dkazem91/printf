@@ -14,13 +14,9 @@ int main(void)
 	char formatbuf[100];
 	char b = NULL;
 	int a;*/
-	char arr[2000];
-	int i=1999;
+	char str[] = {69, -13, 69, 128, 69} ;
 
 	setbuf(stdout, NULL);
-	arr[1999] = 0;
-	while (i--)
-		arr[i] = 'a';
 	#ifndef HIDECANON
 	_printf("Formatting and min/max tests\n");
 	printf("%%%%%% %%%");
@@ -35,6 +31,8 @@ int main(void)
 	printf("return value%d\n", _printf("%%R NULL:%R\n", NULL));
 	printf("return value%d\n", printf("%%S NULL:%S\n", NULL));
 	printf("return value%d\n", _printf("%%S NULL:%S\n", NULL));
+	printf("%ss\n", str);
+	_printf("%ss\n", str);
 	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
@@ -673,8 +671,6 @@ int main(void)
 	_printf("%s%-#010.12o\n", "UInt max -#010.12o:", UINT_MAX);
 	printf("%%p arr:%p\n", ULONG_MAX);
 	_printf("%%p arr:%p\n", ULONG_MAX);
-	printf("%%p arr:%p\n", arr);
-	_printf("%%p arr:%p\n", arr);
 	printf("%%p NULL:%p\n", NULL);
 	_printf("%%p NULL:%p\n", NULL);
 	printf("%%20p NULL:%p\n", NULL);
@@ -685,16 +681,6 @@ int main(void)
 	_printf("%%p NULL + 1:%p\n", NULL + 1);
 	printf("%%p -10:%p\n", -10);
 	_printf("%%p -10:%p\n", -10);
-	printf("%%20p arr:%20p\n", arr);
-	_printf("%%20p arr:%20p\n", arr);
-	printf("%%.20p arr:%.20p\n", arr);
-	_printf("%%.20p arr:%.20p\n", arr);
-	printf("%%-p arr:%-p\n", arr);
-	_printf("%%-p arr:%-p\n", arr);
-	printf("%%020p arr:%020p\n", arr);
-	_printf("%%020p arr:%020p\n", arr);
-	printf("%%020p arr:%020p\n", arr);
-	_printf("%%020p arr:%020p\n", arr);
 	printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
 	_printf("return:%d\n", _printf("widestrwidth %1999999999s\n", "A really wide string"));
 	printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
@@ -703,18 +689,42 @@ int main(void)
 	printf("%d\n",_printf(NULL));
 	printf("%c\n", 128);
 	_printf("%c\n", 128);
-	printf("%c\n", NULL);
-	_printf("%c\n", NULL);
-	printf("%c", NULL);
-	_printf("%c", NULL);
-	printf("%c", 128);
-	_printf("%c", 128);
+	printf("%c\n", 0);
+	_printf("%c\n", 0);
+	printf("%c\n", 127);
+	_printf("%c\n", 127);
+	printf("%c\n", 1);
+	_printf("%c\n", 1);
+	printf("%c\n", 2);
+	_printf("%c\n", 2);
+	printf("%c\n", 3);
+	_printf("%c\n", 3);
+	printf("%c\n", 4);
+	_printf("%c\n", 4);
+	printf("%c\n", 5);
+	_printf("%c\n", 5);
+	printf("%c\n", 6);
+	_printf("%c\n", 6);
+	printf("%c\n", 7);
+	_printf("%c\n", 7);
+	printf("%d",printf("%c", NULL));
+	printf("\n");
+	printf("%d",_printf("%c", NULL));
+	printf("\n");
+	printf("%d",printf("%c", 128));
+	printf("%d",_printf("%c", 128));
 	printf("%s", NULL);
 	_printf("%s", NULL);
 #endif	/* Put other test cases here */
 	_printf("\nOther test cases\n");
 	_printf("%x\n", 0);
 	printf("%%.n:%.n\n");
+	printf("%");
+	_printf("%");
+	printf("%d",printf("printf % %"));
+	printf("\n");
+	printf("%d",_printf("_printf % %"));
+	printf("\n");
 /* Good enough for now. Hiding this output.
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
