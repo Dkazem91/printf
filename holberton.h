@@ -41,6 +41,7 @@ char *prep_numeric(char *str, specifier spec);
 
 /* from utility.c */
 long int _strlen(char *str);
+int ifputs(char *s);
 
 /* from itos.c */
 char *itos(va_list list);

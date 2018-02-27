@@ -4,7 +4,7 @@
 #include "../holberton.h"
 #include <limits.h>
 
-#define HIDECANON
+/*#define HIDECANON*/
 
 int _printf(char *, ...);
 
@@ -27,16 +27,18 @@ int main(void)
 	printf("\n");
 	_printf("%%%%%% %%%");
 	_printf("\n");
-	printf("%%s NULL:%s\n", NULL);
-	_printf("%%s NULL:%s\n", NULL);
-	_printf("%%r NULL:%r\n", NULL);
-	_printf("%%R NULL:%R\n", NULL);
-	printf("%%S NULL:%S\n", NULL);
-	_printf("%%S NULL:%S\n", NULL);
-	printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
-	_printf("%%60s:%60s\n", "A helpful string that is 49 chars long.");
-	printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
-	_printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long.");
+	printf("return value%d\n", printf("%%s Emtpy:%s\n", ""));
+	printf("return value%d\n", _printf("%%s Empty:%s\n", ""));
+	printf("return value%d\n", printf("%%s NULL:%s\n", NULL));
+	printf("return value%d\n", _printf("%%s NULL:%s\n", NULL));
+	printf("return value%d\n", _printf("%%r NULL:%r\n", NULL));
+	printf("return value%d\n", _printf("%%R NULL:%R\n", NULL));
+	printf("return value%d\n", printf("%%S NULL:%S\n", NULL));
+	printf("return value%d\n", _printf("%%S NULL:%S\n", NULL));
+	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
 	printf("%%.10s:%.10s\n", "A helpful string that is 49 chars long.");
 	_printf("%%.10s:%.10s\n", "A helpful string that is 49 chars long.");
 	printf("%%-.10s:%-.10s\n", "A helpful string that is 49 chars long.");
@@ -693,8 +695,24 @@ int main(void)
 	_printf("%%020p arr:%020p\n", arr);
 	printf("%%020p arr:%020p\n", arr);
 	_printf("%%020p arr:%020p\n", arr);
+	printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", _printf("widestrwidth %1999999999s\n", "A really wide string"));
+	printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", _printf("widestrprec %.1999999999s\n", "A really wide string"));
+	printf("%d\n",printf(NULL));
+	printf("%d\n",_printf(NULL));
+	printf("%c\n", 128);
+	_printf("%c\n", 128);
+	printf("%c\n", NULL);
+	_printf("%c\n", NULL);
+	printf("%c", NULL);
+	_printf("%c", NULL);
+	printf("%c", 128);
+	_printf("%c", 128);
+	printf("%s", NULL);
+	_printf("%s", NULL);
 #endif	/* Put other test cases here */
-	_printf("Other test cases\n");
+	_printf("\nOther test cases\n");
 	_printf("%x\n", 0);
 	printf("%%.n:%.n\n");
 /* Good enough for now. Hiding this output.
@@ -708,10 +726,6 @@ int main(void)
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX); */
-	printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
-	_printf("return:%d\n", _printf("widestrwidth %1999999999s\n", "A really wide string"));
-	printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
-	_printf("return:%d\n", _printf("widestrprec %.1999999999s\n", "A really wide string"));
 /* These explode, so don't do them. Leaving here as a note.
 	printf("a char to %%s:%s\n",'a');
 	_printf("%s testing null\n", b); */

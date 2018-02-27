@@ -198,8 +198,15 @@ int _printf(char *format, ...)
 	va_list list;
 	specifier spec;
 
-	errorcode = 0;
+	if (format == NULL)
+		return (-1);
 	va_start(list, format);
+	if (ifputs(format))
+	{
+		printtotal = puts(va_arg(list, char *));
+		va_end(list);
+		return (printtotal);
+	}
 	while (*format)
 	{
 		if (*format == '%')
