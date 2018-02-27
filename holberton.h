@@ -88,6 +88,4 @@ char *null(void);
 /* from ptos.c */
 char *nil(void);
 
-int errorcode;
-
 #endif
