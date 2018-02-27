@@ -212,7 +212,7 @@ int _printf(char *format, ...)
 
 			tmp = stringize_arg(list, spec, &freeflag);
 			if (tmp == NULL)
-				return (-1);
+				break;
 			ptr = tmp;
 			while (*ptr)
 			{
@@ -233,5 +233,7 @@ int _printf(char *format, ...)
 	write(1, buffer, len);
 	printtotal += len;
 	va_end(list);
-		return (printtotal);
+	if (tmp == NULL)
+		return (-1);
+	return (printtotal);
 }
