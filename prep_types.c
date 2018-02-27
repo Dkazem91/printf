@@ -95,7 +95,7 @@ char *prep_numeric(char *str, specifier spec)
 	if (fill != '0' && sign)
 		*ptr++ = sign;
 	while (spec.precision-- > digits)
-			*ptr++ = '0';
+		*ptr++ = '0';
 	while (*str)
 		*ptr++ = *str++;
 	while (spec.left == 1 && spec.width--)

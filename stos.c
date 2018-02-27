@@ -43,7 +43,7 @@ char *rot(char *str)
 	copy = malloc(sizeof(char) * (len + 1));
 	copy[len] = 0;
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		copy[i] = str[i];
 		i++;
@@ -52,7 +52,7 @@ char *rot(char *str)
 	{
 		for (j = 0; input[j] != '\0'; j++)
 		{
-			if(copy[i] == input[j])
+			if (copy[i] == input[j])
 			{
 				copy[i] = key[j];
 				break;
@@ -76,15 +76,15 @@ char *print_hidden(char *str)
 			len += 3;
 		len++;
 	}
-	output = malloc (sizeof(char) * (len + 1));
+	output = malloc(sizeof(char) * (len + 1));
 	for (ptr = output; *str; str++)
 	{
 		if (*str < 32 || *str >= 127)
 		{
 			*ptr++ = '\\';
 			*ptr++ = 'x';
-			*ptr++ = *str / 16 > 9 ? (*str / 16) + 55:(*str / 16) + '0';
-			*ptr++ = *str % 16 > 9 ? (*str % 16) + 55:(*str % 16) + '0';
+			*ptr++ = *str / 16 > 9 ? (*str / 16) + 55 : (*str / 16) + '0';
+			*ptr++ = *str % 16 > 9 ? (*str % 16) + 55 : (*str % 16) + '0';
 		}
 		else
 			*ptr++ = *str;

@@ -7,6 +7,7 @@
 int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
 	int printtotal = 0;
+
 	while (**format != 0 && **format != '%')
 	{
 		buffer[(*len)++] = **format;
@@ -30,44 +31,34 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	case '%':
 		tmpstr[0] = '%';
 		return (tmpstr);
-		break;
 	case 'c':
 		tmpstr[0] = (char) va_arg(list, int);
 		return (tmpstr);
-		break;
 	case 's':
 		*freeflag = 1;
 		return (prep_string(va_arg(list, char *), spec));
-		break;
 	case 'd':
 	case 'i':
 		*freeflag = 1;
 		return (prep_numeric(itos(list), spec));
-		break;
 	case 'b':
 		*freeflag = 1;
 		return (prep_numeric(uitob(list), spec));
-		break;
 	case 'u':
 		*freeflag = 1;
 		return (prep_numeric(utos(list), spec));
-		break;
 	case 'o':
 		*freeflag = 1;
 		return (prep_numeric(itoo(list), spec));
-		break;
 	case 'x':
 		*freeflag = 1;
 		return (prep_numeric(itox(list), spec));
-		break;
 	case 'X':
 		*freeflag = 1;
 		return (prep_numeric(itoX(list), spec));
-		break;
 	case 'r':
 		*freeflag = 1;
 		return (prep_string(rev(va_arg(list, char *)), spec));
-		break;
 	case 'R':
 		*freeflag = 1;
 		return (prep_string(rot(va_arg(list, char *)), spec));
@@ -146,7 +137,7 @@ specifier get_specifier(char **format)
 	case 'R': case 'r': case 'S': case 'p':
 		(*format)++;
 		break;
- 	default:
+	default:
 		*format = start;
 		spec.specifier = '%';
 		break;
@@ -172,7 +163,7 @@ int _printf(char *format, ...)
 				break;
 			spec = get_specifier(&format);
 			freeflag = 0;
-			
+
 			tmp = stringize_arg(list, spec, &freeflag);
 			ptr = tmp;
 			while (*ptr)

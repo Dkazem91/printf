@@ -14,13 +14,13 @@ char *itox(va_list list)
 	digitTest = digits;
 	while (digitTest > 0)
 	{
-		digitTest /=16;
+		digitTest /= 16;
 	        count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
 	digitTest = digits;
-	for(i = count - 1; i >= 0; i--)
+	for (i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
 			result[i] = (digitTest % 16) + 87;
@@ -43,13 +43,13 @@ char *litox(va_list list)
 	digitTest = digits;
 	while (digitTest > 0)
 	{
-		digitTest /=16;
-	        count++;
+		digitTest /= 16;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
 	digitTest = digits;
-	for(i = count - 1; i >= 0; i--)
+	for (i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
 			result[i] = (digitTest % 16) + 87;
@@ -101,8 +101,8 @@ char *hitox(va_list list)
 	digitTest = digits;
 	while (digitTest > 0)
 	{
-		digitTest /=16;
-	        count++;
+		digitTest /= 16;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
