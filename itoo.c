@@ -21,10 +21,7 @@ char *itoo(va_list list)
 	digitTest = digits;
 	output = malloc(sizeof(char) * count + 1);
 	if (output == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
         for (i = count - 1; i >= 0; i--)
         {
                 output[i] = ((digitTest % 8) + '0');
@@ -51,10 +48,7 @@ char *litoo(va_list list)
 	digitTest = digits;
 	output = malloc(sizeof(char) * count + 1);
 	if (output == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
         for (i = count - 1; i >= 0; i--)
         {
                 output[i] = ((digitTest % 8) + '0');
@@ -81,10 +75,7 @@ char *hitoo(va_list list)
 	digitTest = digits;
 	output = malloc(sizeof(char) * count + 1);
 	if (output == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
         for (i = count - 1; i >= 0; i--)
         {
                 output[i] = ((digitTest % 8) + '0');
@@ -111,10 +102,7 @@ char *hhitoo(va_list list)
 	digitTest = digits;
 	output = malloc(sizeof(char) * count + 1);
 	if (output == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
         for (i = count - 1; i >= 0; i--)
         {
                 output[i] = ((digitTest % 8) + '0');

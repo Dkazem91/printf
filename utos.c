@@ -20,10 +20,7 @@ char *utos(va_list list)
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
 	if (result == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -49,10 +46,7 @@ char *lutos(va_list list)
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
 	if (result == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -61,32 +55,7 @@ char *lutos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-/*
-char *llutos(va_list list)
-{
-	unsigned long long int digits, digitTest;
-	int count, i;
-	char *result;
 
-	digits = va_arg(list, unsigned long long int);
-	digitTest = digits;
-	count = 0;
-	while (digitTest > 0)
-	{
-		digitTest /= 10;
-		count++;
-	}
-	digitTest = digits;
-	result = malloc(sizeof(char) * count + 1);
-	for (i = count - 1; i >= 0; i--)
-	{
-		result[i] = (digitTest % 10 + '0');
-		digitTest /= 10;
-	}
-	result[count] = '\0';
-	return (result);
-}
-*/
 char *hutos(va_list list)
 {
 	unsigned short int digits, digitTest;
@@ -104,10 +73,7 @@ char *hutos(va_list list)
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
 	if (result == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');
@@ -134,10 +100,7 @@ char *hhutos(va_list list)
 	digitTest = digits;
 	result = malloc(sizeof(char) * count + 1);
 	if (result == NULL)
-	{
-		errorcode = -1;
 		return (NULL);
-	}
 	for (i = count - 1; i >= 0; i--)
 	{
 		result[i] = (digitTest % 10 + '0');

@@ -709,9 +709,9 @@ int main(void)
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX); */
 	printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
-	_printf("return:%d\n", printf("widestrwidth %1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", _printf("widestrwidth %1999999999s\n", "A really wide string"));
 	printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
-	_printf("return:%d\n", printf("widestrprec %.1999999999s\n", "A really wide string"));
+	_printf("return:%d\n", _printf("widestrprec %.1999999999s\n", "A really wide string"));
 /* These explode, so don't do them. Leaving here as a note.
 	printf("a char to %%s:%s\n",'a');
 	_printf("%s testing null\n", b); */

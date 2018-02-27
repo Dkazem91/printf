@@ -212,7 +212,7 @@ int _printf(char *format, ...)
 
 			tmp = stringize_arg(list, spec, &freeflag);
 			if (tmp == NULL)
-				return (errorcode);
+				return (-1);
 			ptr = tmp;
 			while (*ptr)
 			{

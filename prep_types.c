@@ -13,13 +13,12 @@
 char *prep_numeric(char *str, specifier spec)
 {
 	char *ret, *ptr, *hold = str;
-	unsigned int len, digits, xtype = 0;
+	unsigned long int len, digits, xtype = 0;
 	char fill = ' ', sign = 0;
 
-	setbuf(stdout, NULL);
 	if (str == NULL)
 	{
-		errorcode = -1;
+		free(hold);
 		return (NULL);
 	}
 	if (spec.specifier == 'p' && *str == 0)
@@ -82,7 +81,7 @@ char *prep_numeric(char *str, specifier spec)
 	ret = malloc((len + 1) * sizeof(char));
 	if (ret == NULL)
 	{
-		errorcode = 255;
+		free(hold);
 		return (NULL);
 	}
 	ptr = ret;
@@ -126,11 +125,12 @@ char *prep_numeric(char *str, specifier spec)
 char *prep_string(char *str, specifier spec)
 {
 	char *ret, *ptr, *hold = str;
-	unsigned int len;
+	unsigned long int len;
 
 	if (str == NULL)
 	{
-		free(hold);
+		if (spec.specifier != 's')
+			free(hold);
 		return (null());
 	}
 	len = _strlen(str);
@@ -140,6 +140,12 @@ char *prep_string(char *str, specifier spec)
 	if (len < spec.width && spec.widthflag == 1)
 	{
 		ret = malloc((spec.width + 1) * sizeof(char));
+		if (ret == NULL)
+		{
+			if (spec.specifier != 's')
+				free(hold);
+			return (NULL);
+		}
 		ptr = ret;
 		if (spec.left == 0)
 		{
@@ -162,6 +168,12 @@ char *prep_string(char *str, specifier spec)
 	else
 	{
 		ret = malloc((len + 1) * sizeof(char));
+		if (ret == NULL)
+		{
+			if (spec.specifier != 's')
+				free(hold);
+			return (NULL);
+		}
 		ptr = ret;
 		while (len--)
 			*ptr++ = *str++;
