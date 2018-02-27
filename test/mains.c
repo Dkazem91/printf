@@ -23,6 +23,8 @@ int main(void)
 	printf("\n");
 	_printf("%%%%%% %%%");
 	_printf("\n");
+	printf("return value%d\n", printf("%%s no arg:%s\n"));
+	printf("return value%d\n", _printf("%%s no arg:%s\n"));
 	printf("return value%d\n", printf("%%s Emtpy:%s\n", ""));
 	printf("return value%d\n", _printf("%%s Empty:%s\n", ""));
 	printf("return value%d\n", printf("%%s NULL:%s\n", NULL));
@@ -31,6 +33,8 @@ int main(void)
 	printf("return value%d\n", _printf("%%R NULL:%R\n", NULL));
 	printf("return value%d\n", printf("%%S NULL:%S\n", NULL));
 	printf("return value%d\n", _printf("%%S NULL:%S\n", NULL));
+	printf("return value%d\n", printf("%%s 020304:%s\n", "\x02\x03\x04"));
+	printf("return value%d\n", _printf("%%s 020304:%s\n", "\x02\x03\x04"));
 	printf("return value%d\n",printf("%ss\n", str));
 	printf("return value%d\n",_printf("%ss\n", str));
 	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));

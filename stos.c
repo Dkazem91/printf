@@ -10,7 +10,7 @@
  */
 char *rev(char *str)
 {
-	int i = 0, len;
+	long int i = 0, len;
 	char tmp, *ret, *ptr;
 
 	if (str == NULL)
@@ -36,7 +36,7 @@ char *rot(char *str)
 {
 	char input[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	char key[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
-	int i, j, len;
+	long int i, j, len;
 	char *copy;
 
 	if (str == NULL)
@@ -70,7 +70,7 @@ char *rot(char *str)
 char *print_hidden(char *str)
 {
 	char *output, *ptr;
-	int i, len = 0;
+	long int i, len = 0;
 
 	if (str == NULL)
 		return (null());
