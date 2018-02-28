@@ -35,6 +35,8 @@ int main(void)
 	printf("\n");
 	printf("\n%d\n",printf("%K"));
 	printf("\n%d\n",_printf("%K"));
+	printf("\n%d\n",printf("%!"));
+	printf("\n%d\n",_printf("%!"));
 	printf("return value%d\n", printf("%sasdf\n",longstr));
 	printf("return value%d\n", _printf("%sasdf\n",longstr));
 	printf("%%%%%% %%%");
@@ -57,6 +59,8 @@ int main(void)
 	printf("return value%d\n", _printf("%%s Empty:%s\n", 'a')); explodes */
 	printf("return value%d\n", printf("%%s NULL:%s\n", NULL));
 	printf("return value%d\n", _printf("%%s NULL:%s\n", NULL));
+	printf("return value%d\n", printf("%%c NULL:%c\n", '\0'));
+	printf("return value%d\n", _printf("%%c NULL:%c\n",'\0'));
 	printf("return value%d\n", _printf("%%r NULL:%r\n", NULL));
 	printf("return value%d\n", _printf("%%R NULL:%R\n", NULL));
 	printf("return value%d\n", printf("%%S NULL:%S\n", NULL));
