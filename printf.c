@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include "holberton.h"
 
-int buffer_const_char(char **format, char *buffer, unsigned int *len)
+long int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
-	int printtotal = 0;
+	long int printtotal = 0;
 
 	while (**format != 0 && **format != '%')
 	{
