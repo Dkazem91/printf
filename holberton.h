@@ -19,8 +19,8 @@
  */
 typedef struct specifier
 {
-	unsigned long int width;
-	unsigned long int precision;
+	unsigned int width;
+	unsigned int precision;
 	int length;
 	char widthflag;
 	char precisionflag;
@@ -40,7 +40,7 @@ char *prep_string(char *str, specifier spec);
 char *prep_numeric(char *str, specifier spec);
 
 /* from utility.c */
-long int _strlen(char *str);
+int _strlen(char *str);
 int ifputs(char *s);
 
 /* from itos.c */
