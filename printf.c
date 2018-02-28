@@ -41,6 +41,7 @@ long int buffer_const_char(char **format, char *buffer, unsigned int *len)
 char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 {
 	static char tmpstr[2] = {0, 0};
+	char *tmp;
 
 	switch (spec.specifier)
 	{
@@ -55,7 +56,10 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (prep_string(tmpstr, spec));
 	case 's':
 		*freeflag = 1;
-		return (prep_string(va_arg(list, char *), spec));
+		tmp = va_arg(list, char*);
+		if (tmp != NULL)
+			return (prep_string(tmp, spec));
+		return (-1);
 	case 'd':
 	case 'i':
 		*freeflag = 1;
@@ -114,13 +118,22 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (prep_numeric(itoX(list), spec));
 	case 'r':
 		*freeflag = 1;
-		return (prep_string(rev(va_arg(list, char *)), spec));
+		tmp = rev(va_arg(list, char*));
+		if (tmp != NULL)
+			return (prep_string(tmp, spec));
+		return (-1);
 	case 'R':
 		*freeflag = 1;
-		return (prep_string(rot(va_arg(list, char *)), spec));
+		tmp = rot(va_arg(list, char*));
+		if (tmp != NULL)
+			return (prep_string(tmp, spec));
+		return (-1);
 	case 'S':
 		*freeflag = 1;
-		return (prep_string(print_hidden(va_arg(list, char *)), spec));
+		tmp = print_hidden(va_arg(list, char*));
+		if (tmp != NULL)
+			return (prep_string(tmp, spec));
+		return (-1);
 	case 'p':
 		*freeflag = 1;
 		return (prep_numeric(litox(list), spec));
