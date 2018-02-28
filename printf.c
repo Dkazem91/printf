@@ -5,9 +5,11 @@
 #include "holberton.h"
 
 /**
- * buffer_const_char
+ * buffer_const_char - puts constant format chars into buffer
  *
- * puts constant format chars into buffer
+ * @format: format string
+ * @buffer: output buffer
+ * @len: length of current buffer contents
  *
  * Return: number of chars put into buffer
  */
@@ -30,7 +32,8 @@ int buffer_const_char(char **format, char *buffer, unsigned int *len)
 }
 
 /**
- * stringizer_arg - Sends va_arg to appropriate function, or returns a string for % or %c
+ * stringize_arg - Sends va_arg to appropriate function,
+ * or returns a string for % or %c
  *
  * @list: va_list to pop from
  * @spec: struct of specifier info
@@ -144,6 +147,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
  * get_specifier - gets specifier information
  *
  * @format: format string to get info from
+ * @list: argument list passed to printf
  *
  * Return: specifier struct with info
  */
@@ -251,6 +255,13 @@ specifier get_specifier(char **format, va_list list)
 	return (spec);
 }
 
+/**
+ * _printf - prints a formatted string with given arguments
+ *
+ * @format: format string to use
+ *
+ * Return: characters printed, or -1 on error
+ */
 int _printf(char *format, ...)
 {
 	char *tmp = 0, *ptr = 0, buffer[1024];
