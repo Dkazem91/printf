@@ -25,6 +25,8 @@ int main(void)
 	_printf("\n");
 	printf("return value%d\n", printf("%%s no arg:%s\n"));
 	printf("return value%d\n", _printf("%%s no arg:%s\n"));
+	printf("return value%d\n", printf("%%c no arg:%c\n"));
+	printf("return value%d\n", _printf("%%c no arg:%c\n"));
 	printf("return value%d\n", printf("%%s Emtpy:%s\n", ""));
 	printf("return value%d\n", _printf("%%s Empty:%s\n", ""));
 	printf("return value%d\n", printf("%%s NULL:%s\n", NULL));
