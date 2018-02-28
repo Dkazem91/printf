@@ -1,48 +1,77 @@
-.TH _printf 1 "February 2018" "" "User Commands"
+.TH _printf 1 "February 2018" "" "Linux Programmer's Manual"
 .SH NAME
 .B _printf
 - format and print data.
 .SH SYNOPSIS
-.B _printf
-- \fIFORMAT\fR [\fIARGUMENT\fR]
+.B #include <stdio.h>
+
+.B int _printf(const char
+*\fIformat\fR,...);
 ...
 .SH DESCRIPTION
-Print ARGUMENT(s) according to FORMAT:
+_printf() will produce output according to the \fIformat\fR as described below. _printf() will print to \fIstdout\fR, the standard output stream;
 
-FORMAT is the string that is printed out on the command line. Interpreted sequences are:
+.B FORMAT
+Format is a character string of ordinary characters (not %), which are copied unchanged to stdout. Conversion specifiers will result in taking in 0 or more arguments. Each one starts with a % and ends with the specifier. In between there could be a \fIflag\fR, an optional minimum \fIfield\fR \fIwidth\fR, an optional \fIprecision\fR and an optional \fIlength/fR \fImodifier\fR.
 
-\\\*(rq  double quote
+Arguments must match with the conversion specifier and are used in the order they are given, each specifier will call for the next argument.
 
-\\\ backslash
+.B Flag characters
 
-\\a alert
+The % sign is followed by zero or more of the following flags:
 
-\\b backspace
+\fB#\fR   produces a 0 for octal conversion, '0X' or '0x' for hex conversions
 
-\\c produce no further output
+\fB0\fR	  value should be zero padded left justified. With the '-' flag the 0 flag is ignored. if precsion is given, the 0 flag is ignored as well.
 
-\\e escape
+\fB-\fR	  left justifies the field
 
-\\f form feed
+\fB' '\fR (a space) blank should be left before a positive number
 
-\\n new line
+\fB+\fR	  A sign (+ or -) placed before a number, a plus overrides a space if both used.
 
-\\r carriage return
+.B Field Width
 
-\\t horizontal tab
+Optional decimal digit specifying the total fields width.
 
-\\v vertical tab
+.B Precision
 
-\\NNN byte with octal value NNN (1 to 3 digits)
+Precision is setting the size of the number of digits, must be started with a '.' followed by a decimal.
 
-\\xHH byte with hexadecimal value HH (1 to 2 digits)
+.B length modifier
 
-\\uHHH unicode character with hex value HHHH
+This only effects integer conversion specifiers, changes the type to correspond to the argument type given.
 
-\\uHHHHHHHH \n Unicode Character with hex value HHHHHHHH
+\fBl\fR - long conversion
 
-%% a single %
+\fBll\fR - long long conversion
 
-all conversion specifiers start with a % sign, any modifiers (+,-,' ',#,0,l,h), and then the specifier (c,s,d,i,o,u,x,X,p,r,R,S). The ARGUMENT is converted to the proper type first and then modifiers are handled.
+\fBh\fR - short int conversion
+
+\fBhh\fR - signed or unsigned char conversion
+
+.B Conversion Specifiers
+
+A chracter that will specify the type of conversion to apply for the argument given.
+
+\fBd,i\fR an \fIint\fR argument with signed decimal notation
+
+\fBo,x,X\fR  an \fIint\fR argument with unsigned decimal notation. o converts to octal, x and X converts to hexadecimal with lower and uppercase letters from aA-fF.
+
+\fBc\fR	     takes a character argument.
+
+\fBs\fR	     takes a char * argument
+
+\fBp\fR	     takes a pointer argument and returns address
+
+\fBr\fR	     takes a char * argument and reverses it
+
+\fBR\fR	     takes a char * argument and produces ROT-13 Encrypted version
+
+\fBS\fR	     takes a char * argument and produces the same string along with non printable characters in hex form.
+
+\fB%\fR	     prints a %
+
+
 .SH AUTHOR
 Sidney Burkett, Daniel Kazemian
