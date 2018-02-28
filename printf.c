@@ -160,7 +160,10 @@ specifier get_specifier(char **format)
 	while (**format == 'h')
 	{
 		(*format)++;
-		spec.length--;
+		if (spec.length > -2)
+			spec.length--;
+		else
+			spec.length = 10;
 	}
 	while (**format == 'l')
 	{
@@ -236,8 +239,6 @@ int _printf(char *format, ...)
 					len = 0;
 				}
 			}
-			if (tmp[0] == 0)
-				
 			if (freeflag)
 				free(tmp);
 		}

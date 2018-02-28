@@ -45,6 +45,14 @@ int main(void)
 	printf("return value%d\n", _printf("%%0s:%0s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%0.s:%0.s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%0.s:%0.s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%s empty:%s\n", ""));
+	printf("return value%d\n", _printf("%%s empty:%s\n", ""));
+	printf("return value%d\n", printf("%%.s:%.s\n", ""));
+	printf("return value%d\n", _printf("%%.s:%.s\n", ""));
+	printf("return value%d\n", printf("%%0s:%0s\n", ""));
+	printf("return value%d\n", _printf("%%0s:%0s\n", ""));
+	printf("return value%d\n", printf("%%0.s:%0.s\n", ""));
+	printf("return value%d\n", _printf("%%0.s:%0.s\n", ""));
 	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%60.s:%60.s\n", "A helpful string that is 49 chars long."));
