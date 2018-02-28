@@ -52,7 +52,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (tmpstr);
 	case 'c':
 		tmpstr[0] = (char) va_arg(list, int);
-		return (tmpstr);
+		return (prep_string(tmpstr, spec));
 	case 's':
 		*freeflag = 1;
 		return (prep_string(va_arg(list, char *), spec));
@@ -135,7 +135,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
  *
  * Return: specifier struct with info
  */
-specifier get_specifier(char **format)
+specifier get_specifier(char **format, va_list list)
 {
 	specifier spec;
 	char *start;
@@ -159,19 +159,24 @@ specifier get_specifier(char **format)
 		(*format)++;
 	}
 	spec.width = 0;	spec.widthflag = 0;
-	while (**format >= '0' && **format <= '9')
-	{
-		spec.widthflag = 1;
-		spec.width *= 10;
-		spec.width += **format - '0';
-		(*format)++;
-	}
+	if (**format == '*')
+		spec.width = va_arg(list, int);
+	else
+		while (**format >= '0' && **format <= '9')
+		{
+			spec.widthflag = 1;
+			spec.width *= 10;
+			spec.width += **format - '0';
+			(*format)++;
+		}
 	spec.precision = 1; spec.precisionflag = 0;
 	if (**format == '.')
 	{
 		spec.precisionflag = 1;
 		spec.precision = 0;
 		(*format)++;
+		if (**format == '*')
+			spec.precision = va_arg(list, int);
 		while (**format >= '0' && **format <= '9')
 		{
 			spec.precision *= 10;
@@ -209,7 +214,7 @@ specifier get_specifier(char **format)
 		(*format)++;
 		break;
 	default:
-		*format = start + 1;
+		*format = start;
 		spec.specifier = '%';
 		break;
 	}
@@ -243,7 +248,7 @@ int _printf(char *format, ...)
 			format++;
 			if (*format == 0)
 				break;
-			spec = get_specifier(&format);
+			spec = get_specifier(&format, list);
 			freeflag = 0;
 			charzero = 0;
 

@@ -29,10 +29,10 @@ int main(void)
 	printf("\n");
 	_printf("%%%%%% %%%");
 	_printf("\n");
-	printf("return value%d\n", printf("%%s no arg:%s\n"));
+/*	printf("return value%d\n", printf("%%s no arg:%s\n"));
 	printf("return value%d\n", _printf("%%s no arg:%s\n"));
 	printf("return value%d\n", printf("%%c no arg:%c\n"));
-	printf("return value%d\n", _printf("%%c no arg:%c\n"));
+	printf("return value%d\n", _printf("%%c no arg:%c\n"));*/
 	printf("return value%d\n", printf("%%s Emtpy:%s\n", ""));
 	printf("return value%d\n", _printf("%%s Empty:%s\n", ""));
 	printf("return value%d\n", printf("%%s null terms:%s\n", "\0\0"));
@@ -53,6 +53,8 @@ int main(void)
 	printf("return value%d\n", _printf("%%s 020304:%s\n", "\x02\x03\x04"));
 	printf("return value%d\n",printf("%ss\n", str));
 	printf("return value%d\n",_printf("%ss\n", str));
+	printf("%2c\n%.3c\n%4.3c\n", 'a', 'b', 'c');
+	_printf("%2c\n%.3c\n%4.3c\n", 'a', 'b', 'c');
 	printf("return value%d\n", printf("%%s:%s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%s:%s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%.s:%.s\n", "A helpful string that is 49 chars long."));
@@ -1130,7 +1132,7 @@ int main(void)
         _printf("%0s\n", "hello");
 	printf(" +#0s\n", "hello");
 	_printf(" +#0s\n", "hello");
-	printf("%%.n:%.n\n");
+/*	printf("%%.n:%.n\n");*/
 	printf("%");
 	_printf("%");
 	printf("%d",printf("printf % %"));

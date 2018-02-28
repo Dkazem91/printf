@@ -129,7 +129,7 @@ char *prep_string(char *str, specifier spec)
 
 	if (str == NULL)
 	{
-		if (spec.specifier != 's')
+		if (spec.specifier != 's' && spec.specifier != 'c')
 			free(hold);
 		return (null());
 	}
@@ -142,7 +142,7 @@ char *prep_string(char *str, specifier spec)
 		ret = malloc((spec.width + 1) * sizeof(char));
 		if (ret == NULL)
 		{
-			if (spec.specifier != 's')
+			if (spec.specifier != 's' && spec.specifier != 'c')
 				free(hold);
 			return (NULL);
 		}
@@ -170,7 +170,7 @@ char *prep_string(char *str, specifier spec)
 		ret = malloc((len + 1) * sizeof(char));
 		if (ret == NULL)
 		{
-			if (spec.specifier != 's')
+			if (spec.specifier != 's' && spec.specifier != 'c')
 				free(hold);
 			return (NULL);
 		}
@@ -179,7 +179,7 @@ char *prep_string(char *str, specifier spec)
 			*ptr++ = *str++;
 		*ptr = 0;
 	}
-	if (spec.specifier != 's')
+	if (spec.specifier != 's' && spec.specifier != 'c')
 		free(hold);
 	return (ret);
 }
