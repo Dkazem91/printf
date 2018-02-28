@@ -134,6 +134,8 @@ char *prep_string(char *str, specifier spec)
 		return (null());
 	}
 	len = _strlen(str);
+	if (spec.specifier == 'c' && *str == 0)
+		len++;
 	if (len > spec.precision && spec.precisionflag == 1)
 		len = spec.precision;
 

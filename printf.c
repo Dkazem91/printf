@@ -53,6 +53,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (tmpstr);
 	case 'c':
 		tmpstr[0] = (char) va_arg(list, int);
+		*freeflag = 1;
 		return (prep_string(tmpstr, spec));
 	case 's':
 		*freeflag = 1;
@@ -172,6 +173,7 @@ specifier get_specifier(char **format, va_list list)
 	spec.width = 0;	spec.widthflag = 0;
 	if (**format == '*')
 	{
+		spec.widthflag = 1;
 		spec.width = va_arg(list, int);
 		(*format)++;
 	}
@@ -278,8 +280,10 @@ int _printf(char *format, ...)
 			if (tmp == NULL)
 				break;
 			ptr = tmp;
-			while (*ptr || (charzero == 0 && spec.specifier == 'c'))
+			while (*ptr || spec.width || (charzero == 0 && spec.specifier == 'c'))
 			{
+				if (spec.width > 0)
+					spec.width--;
 				buffer[len++] = *ptr++;
 				charzero = 1;
 				if (len == 1024)

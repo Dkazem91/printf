@@ -71,6 +71,8 @@ int main(void)
 	printf("return value%d\n",_printf("%ss\n", str));
 	printf("%2c\n%.3c\n%4.3c\n", 'a', 'b', 'c');
 	_printf("%2c\n%.3c\n%4.3c\n", 'a', 'b', 'c');
+	printf("%2c\n%.3c\n%4.3c\n", 0, 0, 0);
+	_printf("%2c\n%.3c\n%4.3c\n", 0, 0, 0);
 	printf("return value%d\n", printf("%%s:%s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%s:%s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%.s:%.s\n", "A helpful string that is 49 chars long."));
@@ -1111,6 +1113,12 @@ int main(void)
 	_printf("%c\n", 128);
 	printf("%c\n", 0);
 	_printf("%c\n", 0);
+	printf("asdf%casdf\n", 0);
+	_printf("asdf%casdf\n", 0);
+	printf("%c", 0);
+	printf("\n");
+	_printf("%c", 0);
+	printf("\n");
 	printf("%c\n", 127);
 	_printf("%c\n", 127);
 	printf("%c\n", 1);
