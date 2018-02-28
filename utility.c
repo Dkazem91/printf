@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include "holberton.h"
 #include <unistd.h>
-
 /**
  * _strlen - returns length of a string
  *
@@ -23,13 +22,14 @@ long int _strlen(char *str)
 /**
  * _puts - prints a string followed by a newline
  *
- * @str: string to print;
+ * @s: string to print;
  *
  * Return: number of characters printed
  */
 int _puts(char *s)
 {
 	long int len;
+
 	while (*s)
 	{
 		write(1, s, 1);
@@ -48,7 +48,7 @@ int _puts(char *s)
  */
 int ifputs(char *str)
 {
-	if(str[0] == '%' && str[1] == 's' && str[2] == '\n' && str[3] == 0)
+	if (str[0] == '%' && str[1] == 's' && str[2] == '\n' && str[3] == 0)
 		return (1);
 	return (0);
 }

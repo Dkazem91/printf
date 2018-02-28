@@ -3,7 +3,11 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
-
+/**
+ * uitob - converts to binary
+ * @list: list to convert
+ * Return: a string
+ */
 char *uitob(va_list list)
 {
 	unsigned int uiArg, uiArgTest;
@@ -31,7 +35,11 @@ char *uitob(va_list list)
 	return (result);
 
 }
-
+/**
+ * luitob - converts to binary (long)
+ * @list: list to convert
+ * Return: a string
+ */
 char *luitob(va_list list)
 {
 	unsigned long int uiArg, uiArgTest;
@@ -60,6 +68,11 @@ char *luitob(va_list list)
 
 }
 
+/**
+ * huitob - converts to binary (short)
+ * @list: list to convert
+ * Return: a string
+ */
 char *huitob(va_list list)
 {
 	unsigned short int uiArg, uiArgTest;
@@ -88,6 +101,11 @@ char *huitob(va_list list)
 
 }
 
+/**
+ * hhuitob - converts to binary (short short)
+ * @list: list to convert
+ * Return: a string
+ */
 char *hhuitob(va_list list)
 {
 	unsigned char uiArg, uiArgTest;

@@ -3,6 +3,11 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
+/**
+ * utos - convertes unsigned to string
+ * @list: list of vargs to take
+ * Return: returns a string
+ */
 char *utos(va_list list)
 {
 	unsigned int digits, digitTest;
@@ -29,6 +34,12 @@ char *utos(va_list list)
 	result[count] = '\0';
 	return (result);
 }
+
+/**
+ * lutos - convertes unsigned to string (long)
+ * @list: list of vargs to take
+ * Return: returns a string
+ */
 char *lutos(va_list list)
 {
 	unsigned long int digits, digitTest;
@@ -56,6 +67,11 @@ char *lutos(va_list list)
 	return (result);
 }
 
+/**
+ * hutos - convertes unsigned to string (short)
+ * @list: list of vargs to take
+ * Return: returns a string
+ */
 char *hutos(va_list list)
 {
 	unsigned short int digits, digitTest;
@@ -83,6 +99,11 @@ char *hutos(va_list list)
 	return (result);
 }
 
+/**
+ * hhutos - convertes unsigned to string (short short)
+ * @list: list of vargs to take
+ * Return: returns a string
+ */
 char *hhutos(va_list list)
 {
 	unsigned char digits, digitTest;

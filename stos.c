@@ -4,7 +4,7 @@
 /**
  * rev - reverses a string
  *
- * @str - string to reverse
+ * @str: string to reverse
  *
  * Return: reversed string
  */
@@ -32,6 +32,11 @@ char *rev(char *str)
 	}
 	return (ret);
 }
+/**
+ * rot - converts to rot 13 encryption
+ * @str: string to conver
+ * Return: returns a string
+ */
 char *rot(char *str)
 {
 	char input[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -66,7 +71,11 @@ char *rot(char *str)
 
 	return (copy);
 }
-
+/**
+ * print_hidden - prints full string and non printable chars
+ * @str: string to convert
+ * Return: converted string
+ */
 char *print_hidden(char *str)
 {
 	char *output, *ptr;

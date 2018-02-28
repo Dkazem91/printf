@@ -722,6 +722,16 @@ int main(void)
 #endif	/* Put other test cases here */
 	_printf("\nOther test cases\n");
 	_printf("%x\n", 0);
+        printf("% s\n", "hello");
+        _printf("% s\n", "hello");
+        printf("%+s\n", "hello");
+        _printf("%+s\n", "hello");
+        printf("%#s\n", "hello");
+        _printf("%#s\n", "hello");
+        printf("%0s\n", "hello");
+        _printf("%0s\n", "hello");
+	printf(" +#0s\n", "hello");
+	_printf(" +#0s\n", "hello");
 	printf("%%.n:%.n\n");
 	printf("%");
 	_printf("%");

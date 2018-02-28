@@ -30,7 +30,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	{
 	case 'n':
 		tmpstr[0] = 0;
-		return tmpstr;
+		return (tmpstr);
 	case '%':
 		tmpstr[0] = '%';
 		return (tmpstr);
@@ -80,18 +80,18 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (prep_numeric(itoo(list), spec));
 	case 'x':
 		*freeflag = 1;
-		if(spec.length == 1)
+		if (spec.length == 1)
 			return (prep_numeric(litox(list), spec));
-		if(spec.length == -1)
+		if (spec.length == -1)
 			return (prep_numeric(hitox(list), spec));
 		if (spec.length < -1)
 			return (prep_numeric(hhitox(list), spec));
 		return (prep_numeric(itox(list), spec));
 	case 'X':
 		*freeflag = 1;
-		if(spec.length == 1)
+		if (spec.length == 1)
 			return (prep_numeric(litoX(list), spec));
-		if(spec.length == -1)
+		if (spec.length == -1)
 			return (prep_numeric(hitoX(list), spec));
 		if (spec.length < -1)
 			return (prep_numeric(hhitoX(list), spec));

@@ -3,6 +3,11 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "holberton.h"
+/**
+ * itox - converts to hex
+ * @list: list of args to take
+ * Return: returns a string
+ */
 char *itox(va_list list)
 {
 	unsigned int digits, digitTest;
@@ -15,7 +20,7 @@ char *itox(va_list list)
 	while (digitTest > 0)
 	{
 		digitTest /= 16;
-	        count++;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
@@ -33,7 +38,11 @@ char *itox(va_list list)
 	result[count] = '\0';
 	return (result);
 }
-
+/**
+ * litox - converts to hex (long)
+ * @list: list of args to take
+ * Return: returns a string
+ */
 char *litox(va_list list)
 {
 	unsigned long int digits, digitTest;
@@ -65,6 +74,11 @@ char *litox(va_list list)
 	return (result);
 }
 
+/**
+ * hitox - converts to hex (short)
+ * @list: list of args to take
+ * Return: returns a string
+ */
 char *hitox(va_list list)
 {
 	short int digits, digitTest;
@@ -84,7 +98,7 @@ char *hitox(va_list list)
 	if (result == NULL)
 		return (NULL);
 	digitTest = digits;
-	for(i = count - 1; i >= 0; i--)
+	for (i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
 			result[i] = (digitTest % 16) + 87;
@@ -96,6 +110,11 @@ char *hitox(va_list list)
 	return (result);
 }
 
+/**
+ * hhitox - converts to hex (short short)
+ * @list: list of args to take
+ * Return: returns a string
+ */
 char *hhitox(va_list list)
 {
 	unsigned char digits, digitTest;
@@ -107,15 +126,15 @@ char *hhitox(va_list list)
 	digitTest = digits;
 	while (digitTest > 0)
 	{
-		digitTest /=16;
-	        count++;
+		digitTest /= 16;
+		count++;
 	}
 
 	result = malloc(sizeof(char) * count + 1);
 	if (result == NULL)
 		return (NULL);
 	digitTest = digits;
-	for(i = count - 1; i >= 0; i--)
+	for (i = count - 1; i >= 0; i--)
 	{
 		if (digitTest % 16 > 9)
 			result[i] = (digitTest % 16) + 87;
