@@ -30,6 +30,7 @@ The % sign is followed by zero or more of the following flags:
 
 \fB+\fR	  A sign (+ or -) placed before a number, a plus overrides a space if both used.
 
+\fB*\fR A sign to set a custom width or precision based on an argument.
 .B Field Width
 
 Optional decimal digit specifying the total fields width.
@@ -71,6 +72,12 @@ A chracter that will specify the type of conversion to apply for the argument gi
 \fBS\fR	     takes a char * argument and produces the same string along with non printable characters in hex form.
 
 \fB%\fR	     prints a %
+
+\fB b\fR     take an unsigned int argument and prints out the binary
+
+.SH EXAMPLE
+
+int _printf(%s\\n,\*(lqHello\*(rq); will read the %s and grab the first argument, the string hello. It will print the argument and the move to the next character in the format string. It will read the new line character and create a newline afterwards.
 
 
 .SH AUTHOR
