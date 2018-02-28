@@ -19,7 +19,8 @@ int main(void)
 
 	setbuf(stdout, NULL);
 	#ifndef HIDECANON
-	_printf("Formatting and min/max tests\n");
+	printf("%d\n",printf("Formatting and min/max tests\n"));
+	printf("%d\n",_printf("Formatting and min/max tests\n"));
 	printf("return value%d\n", printf("%sasdf\n",longstr));
 	printf("return value%d\n", _printf("%sasdf\n",longstr));
 	printf("%%%%%% %%%");

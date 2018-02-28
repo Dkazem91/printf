@@ -4,6 +4,13 @@
 #include <stdio.h>
 #include "holberton.h"
 
+/**
+ * buffer_const_char
+ *
+ * puts constant format chars into buffer
+ *
+ * Return: number of chars put into buffer
+ */
 long int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
 	long int printtotal = 0;
@@ -22,6 +29,15 @@ long int buffer_const_char(char **format, char *buffer, unsigned int *len)
 	return (printtotal);
 }
 
+/**
+ * stringizer_arg - Sends va_arg to appropriate function, or returns a string for % or %c
+ *
+ * @list: va_list to pop from
+ * @spec: struct of specifier info
+ * @freeflag: set if we need to free a malloc
+ *
+ * Return: string to add to buffer
+ */
 char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 {
 	static char tmpstr[2] = {0, 0};
@@ -112,6 +128,13 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	return (NULL);
 }
 
+/**
+ * get_specifier - gets specifier information
+ *
+ * @format: format string to get info from
+ *
+ * Return: specifier struct with info
+ */
 specifier get_specifier(char **format)
 {
 	specifier spec;
@@ -202,8 +225,10 @@ int _printf(char *format, ...)
 	va_list list;
 	specifier spec;
 
+	tmp = buffer;
 	if (format == NULL)
 		return (-1);
+	tmp = buffer;
 	va_start(list, format);
 	if (ifputs(format))
 	{
