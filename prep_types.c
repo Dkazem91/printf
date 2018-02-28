@@ -127,8 +127,10 @@ char *prep_string(char *str, specifier spec)
 	char *ret, *ptr, *hold = str;
 	unsigned long int len;
 
+	printf("start of string print %c\n", spec.specifier);
 	if (str == NULL)
 	{
+		printf("Str null free");
 		if (spec.specifier != 's')
 			free(hold);
 		return (null());
@@ -142,6 +144,7 @@ char *prep_string(char *str, specifier spec)
 		ret = malloc((spec.width + 1) * sizeof(char));
 		if (ret == NULL)
 		{
+			printf("New malloc free\n");
 			if (spec.specifier != 's')
 				free(hold);
 			return (NULL);
@@ -170,6 +173,7 @@ char *prep_string(char *str, specifier spec)
 		ret = malloc((len + 1) * sizeof(char));
 		if (ret == NULL)
 		{
+			printf("in place free\n");
 			if (spec.specifier != 's')
 				free(hold);
 			return (NULL);
@@ -180,6 +184,9 @@ char *prep_string(char *str, specifier spec)
 		*ptr = 0;
 	}
 	if (spec.specifier != 's')
+	{
+		printf("normal free %c\n", spec.specifier);
 		free(hold);
+	}
 	return (ret);
 }
