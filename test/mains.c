@@ -39,10 +39,14 @@ int main(void)
 	printf("\n%d\n",_printf("%!"));
 	printf("return value%d\n", printf("%sasdf\n",longstr));
 	printf("return value%d\n", _printf("%sasdf\n",longstr));
+	printf("%");
+	printf("\n");
+	_printf("%");
+	_printf("\n");
 	printf("%%%%%% %%%");
 	printf("\n");
 	_printf("%%%%%% %%%");
-	_printf("\n");
+	printf("\n");
 /*	printf("return value%d\n", printf("%%s no arg:%s\n"));
 	printf("return value%d\n", _printf("%%s no arg:%s\n"));
 	printf("return value%d\n", printf("%%c no arg:%c\n"));

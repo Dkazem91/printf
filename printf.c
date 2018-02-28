@@ -237,8 +237,14 @@ specifier get_specifier(char **format, va_list list)
 	case 'R': case 'r': case 'S': case 'p':
 		(*format)++;
 		break;
+	case 0:
+		spec.specifier  = 'y';
+		if (spec.length == 0)
+			break;
 	default:
 		*format = start;
+		if (spec.length != 0)
+			(*format)++;
 		spec.specifier = '%';
 		break;
 	}
@@ -271,8 +277,13 @@ int _printf(char *format, ...)
 		{
 			format++;
 			if (*format == 0)
+			{
+				spec.specifier = 'y';
 				break;
+			}
 			spec = get_specifier(&format, list);
+			if (spec.specifier == 'y')
+				break;
 			freeflag = 0;
 			charzero = 0;
 
@@ -301,11 +312,11 @@ int _printf(char *format, ...)
 		else
 			printtotal += buffer_const_char(&format, buffer, &len);
 	}
+	va_end(list);
 	lenr = write(1, buffer, len);
-	if (lenr == -1)
+	if (lenr == -1 || spec.specifier == 'y')
 		return (-1);
 	printtotal += lenr;
-	va_end(list);
 	if (tmp == NULL)
 		return (-1);
 	return (printtotal);
