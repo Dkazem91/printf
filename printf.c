@@ -160,8 +160,12 @@ specifier get_specifier(char **format, va_list list)
 	}
 	spec.width = 0;	spec.widthflag = 0;
 	if (**format == '*')
+	{
 		spec.width = va_arg(list, int);
+		(*format)++;
+	}
 	else
+	{
 		while (**format >= '0' && **format <= '9')
 		{
 			spec.widthflag = 1;
@@ -169,6 +173,7 @@ specifier get_specifier(char **format, va_list list)
 			spec.width += **format - '0';
 			(*format)++;
 		}
+	}
 	spec.precision = 1; spec.precisionflag = 0;
 	if (**format == '.')
 	{
@@ -176,12 +181,18 @@ specifier get_specifier(char **format, va_list list)
 		spec.precision = 0;
 		(*format)++;
 		if (**format == '*')
-			spec.precision = va_arg(list, int);
-		while (**format >= '0' && **format <= '9')
 		{
-			spec.precision *= 10;
-			spec.precision += **format - '0';
+			spec.precision = va_arg(list, int);
 			(*format)++;
+		}
+		else
+		{
+			while (**format >= '0' && **format <= '9')
+			{
+				spec.precision *= 10;
+				spec.precision += **format - '0';
+				(*format)++;
+			}
 		}
 	}
 	spec.length = 0;
