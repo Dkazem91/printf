@@ -37,8 +37,18 @@ int main(void)
 	printf("return value%d\n", _printf("%%s 020304:%s\n", "\x02\x03\x04"));
 	printf("return value%d\n",printf("%ss\n", str));
 	printf("return value%d\n",_printf("%ss\n", str));
+	printf("return value%d\n", printf("%%s:%s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%s:%s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%.s:%.s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%.s:%.s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%0s:%0s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%0s:%0s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%0.s:%0.s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%0.s:%0.s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%60s:%60s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", printf("%%60.s:%60.s\n", "A helpful string that is 49 chars long."));
+	printf("return value%d\n", _printf("%%60.s:%60.s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
 	printf("return value%d\n", _printf("%%-60s:%-60s\n", "A helpful string that is 49 chars long."));
 	printf("%%.10s:%.10s\n", "A helpful string that is 49 chars long.");
@@ -113,6 +123,8 @@ int main(void)
 	_printf("%s%ld\n", "Long max ld:", LONG_MIN);
 	printf("%s%hhd\n", "127 hhd:", 127);
 	_printf("%s%hhd\n", "127 hhd:", 127);
+	printf("%s%hhhd\n", "127 hhhd:", 127);
+	_printf("%s%hhhd\n", "127 hhhd:", 127);
 	printf("%s%ld\n", "Long max - 1 ld:", LONG_MIN - 1);
 	_printf("%s%ld\n", "Long max - 1 ld:", LONG_MIN - 1);
 	printf("%s%hld\n", "Long max - 1 hld:", LONG_MIN - 1);
@@ -739,19 +751,23 @@ int main(void)
 	printf("\n");
 	printf("%d",_printf("_printf % %"));
 	printf("\n");
-/* Good enough for now. Hiding this output. */
+/* Good enough for now. Hiding this output.*/
 	printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	_printf("%zzzzzs%s\n", "--case %zzzzzs%s--");
 	printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
 	_printf("%123zzzzzs%s\n", "--case %123zzzzzs%s--");
-/*	printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
+	printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
 	_printf("-##-0-0#-20.40d:%-##-0-0#-20.40d\n", INT_MAX);
 	printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
 	_printf("-##-0-0#-20.40.5d:%-##-0-0#-20.40.5d\n", INT_MAX);
+	printf("-# +#-0-0#-20.40.5d:%-# +#-0-0#-20.40.5d\n", INT_MAX);
+	_printf("-# +#-0-0#-20.40.5d:%-# +#-0-0#-20.40.5d\n", INT_MAX);
+	printf("-# +#-0-0#-20.40.5d:%-#+ #-0-0#-20.40.5d\n", INT_MAX);
+	_printf("-# +#-0-0#-20.40.5d:%-#+ #-0-0#-20.40.5d\n", INT_MAX);
 	printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
-	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);*/
-	printf("character to %%s test\n");
+	_printf("-##-20-0#-20.40.5d:%-##-20-0#-20.40.5d\n", INT_MAX);
+/*	printf("character to %%s test\n");
 	printf("character to %s test\n");
 	_printf("a char to %%s:%s\n",'a');
-	printf("a char to %%s:%s\n",'a');
+	printf("a char to %%s:%s\n",'a');*/
 }
