@@ -11,9 +11,9 @@
  *
  * Return: number of chars put into buffer
  */
-long int buffer_const_char(char **format, char *buffer, unsigned int *len)
+int buffer_const_char(char **format, char *buffer, unsigned int *len)
 {
-	long int printtotal = 0;
+	int printtotal = 0;
 
 	while (**format != 0 && **format != '%')
 	{
@@ -247,8 +247,8 @@ int _printf(char *format, ...)
 {
 	char *tmp = 0, *ptr = 0, buffer[1024];
 	unsigned int len =  0, freeflag = 0, charzero;
-	unsigned long int printtotal = 0;
-	long int lenr = 0;
+	unsigned int printtotal = 0;
+	int lenr = 0;
 	va_list list;
 	specifier spec;
 

@@ -13,7 +13,7 @@
 char *prep_numeric(char *str, specifier spec)
 {
 	char *ret, *ptr, *hold = str;
-	unsigned long int len, digits, xtype = 0;
+	unsigned int len, digits, xtype = 0;
 	char fill = ' ', sign = 0;
 
 	if (str == NULL)
@@ -125,7 +125,7 @@ char *prep_numeric(char *str, specifier spec)
 char *prep_string(char *str, specifier spec)
 {
 	char *ret, *ptr, *hold = str;
-	unsigned long int len;
+	unsigned int len;
 
 	if (str == NULL)
 	{
