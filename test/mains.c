@@ -32,6 +32,12 @@ int main(void)
 	printf("return value%d\n", _printf("%%c no arg:%c\n"));
 	printf("return value%d\n", printf("%%s Emtpy:%s\n", ""));
 	printf("return value%d\n", _printf("%%s Empty:%s\n", ""));
+	printf("return value%d\n", printf("%%s null terms:%s\n", "\0\0"));
+	printf("return value%d\n", _printf("%%s null terms:%s\n", "\0\0"));
+	printf("format with null\0 in the middle");
+	printf("\n");
+	_printf("format with null\0 in the middle");
+	printf("\n");
 /*	printf("return value%d\n", printf("%%s Emtpy:%s\n", 'a')); explodes
 	printf("return value%d\n", _printf("%%s Empty:%s\n", 'a')); explodes */
 	printf("return value%d\n", printf("%%s NULL:%s\n", NULL));
