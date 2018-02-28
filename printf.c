@@ -57,9 +57,7 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 	case 's':
 		*freeflag = 1;
 		tmp = va_arg(list, char*);
-		if (tmp != NULL)
-			return (prep_string(tmp, spec));
-		return (-1);
+		return (prep_string(tmp, spec));
 	case 'd':
 	case 'i':
 		*freeflag = 1;
@@ -121,19 +119,19 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		tmp = rev(va_arg(list, char*));
 		if (tmp != NULL)
 			return (prep_string(tmp, spec));
-		return (-1);
+		return (NULL);
 	case 'R':
 		*freeflag = 1;
 		tmp = rot(va_arg(list, char*));
 		if (tmp != NULL)
 			return (prep_string(tmp, spec));
-		return (-1);
+		return (NULL);
 	case 'S':
 		*freeflag = 1;
 		tmp = print_hidden(va_arg(list, char*));
 		if (tmp != NULL)
 			return (prep_string(tmp, spec));
-		return (-1);
+		return (NULL);
 	case 'p':
 		*freeflag = 1;
 		return (prep_numeric(litox(list), spec));
