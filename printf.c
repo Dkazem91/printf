@@ -39,7 +39,6 @@ char *stringize_arg(va_list list, specifier spec, unsigned int *freeflag)
 		return (tmpstr);
 	case 's':
 		*freeflag = 1;
-		printf("spec.spec %c\n",spec.specifier);
 		return (prep_string(va_arg(list, char *), spec));
 	case 'd':
 	case 'i':
