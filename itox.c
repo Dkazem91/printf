@@ -81,7 +81,7 @@ char *litox(va_list list)
  */
 char *hitox(va_list list)
 {
-	short int digits, digitTest;
+	unsigned short int digits, digitTest;
 	int count, i;
 	char *result;
 

@@ -21,6 +21,8 @@ int main(void)
 	#ifndef HIDECANON
 	printf("%d\n",printf("Formatting and min/max tests\n"));
 	printf("%d\n",_printf("Formatting and min/max tests\n"));
+	printf("\n%d\n",printf("%K"));
+	printf("\n%d\n",_printf("%K"));
 	printf("return value%d\n", printf("%sasdf\n",longstr));
 	printf("return value%d\n", _printf("%sasdf\n",longstr));
 	printf("%%%%%% %%%");
@@ -137,6 +139,8 @@ int main(void)
 	_printf("%s%hld\n", "Long max + 1 hld:", LONG_MAX + 1);
 	printf("%s%hld\n", "Short max + 1 hld:", SHRT_MAX + 1);
 	_printf("%s%hld\n", "Short max + 1 hld:", SHRT_MAX + 1);
+	printf("%hx - %hx = %hx\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
+	_printf("%hx - %hx = %hx\n", USHRT_MAX, 2048, USHRT_MAX - 2048);
 	printf("%s%hd\n", "Short max hd:", SHRT_MAX);
 	_printf("%s%hd\n", "Short max hd:", SHRT_MAX);
 	printf("%s%hd\n", "Short max - 1 hd:", SHRT_MAX - 1);
