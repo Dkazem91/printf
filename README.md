@@ -94,5 +94,5 @@ gcc -o printftest *.c tests/mains.c
 ```
 
 ## Authors
-Sidney Burkett
+Sidney Burkett  
 Daniel Kazemian
