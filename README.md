@@ -21,7 +21,7 @@ Implemented flags and options:
 * Width
 * Precision
 * +/space to set sign
-* - to left justify
+* \- to left justify
 * \# to display hex/octal binary prefix
 * \* and .\* to accept variables for width and precision
 * hh, h, and l length flags
